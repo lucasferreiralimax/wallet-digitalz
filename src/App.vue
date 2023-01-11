@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeaderApp from './components/HeaderApp.vue'
+import HeaderApp from './components/HeaderApp/index.vue'
 </script>
 
 <template>
