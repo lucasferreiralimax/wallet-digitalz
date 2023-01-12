@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import NewRegister from '../NewRegister/index.vue'
 
 const panel = ref<string[]>([])
 
 function all () {
   panel.value = ['foo', 'bar', 'baz']
 }
+
 function none () {
   panel.value = []
 }
@@ -14,6 +16,7 @@ function none () {
 <template>
   <div>
     <div class="text-center d-flex pb-4">
+      <NewRegister />
       <v-btn class="ma-2" @click="all">
         Expand All
       </v-btn>
@@ -45,9 +48,3 @@ function none () {
     </v-expansion-panels>
   </div>
 </template>
-
-<style scoped>
-.icon {
-  margin-right: .5rem;
-}
-</style>
