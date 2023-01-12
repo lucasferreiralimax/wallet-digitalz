@@ -3,13 +3,11 @@ import { ref } from 'vue'
 import NewRegister from '../NewRegister/index.vue'
 
 const panel = ref<string[]>([])
+const panelChangeView = ref<boolean>(false)
 
-function all () {
-  panel.value = ['foo', 'bar', 'baz']
-}
-
-function none () {
-  panel.value = []
+function changeView () {
+  panel.value = !panelChangeView.value ? ['foo', 'bar', 'baz'] : []
+  panelChangeView.value = !panelChangeView.value;
 }
 </script>
 
@@ -17,11 +15,15 @@ function none () {
   <div>
     <div class="text-center d-flex pb-4">
       <NewRegister />
-      <v-btn class="ma-2" @click="all">
-        Expand All
-      </v-btn>
-      <v-btn class="ma-2" @click="none">
-        Compact All
+      <v-btn class="ma-2" @click="changeView">
+        <template v-if="!panelChangeView">
+          <v-icon class="icon" icon="mdi-arrow-expand-vertical" />
+          Expand All
+        </template>
+        <template v-else>
+          <v-icon class="icon" icon="mdi-arrow-collapse-vertical" />
+          Compact All
+        </template>
       </v-btn>
     </div>
     <v-expansion-panels
@@ -48,3 +50,9 @@ function none () {
     </v-expansion-panels>
   </div>
 </template>
+
+<style scoped>
+.icon {
+  margin-right: .5rem;
+}
+</style>
