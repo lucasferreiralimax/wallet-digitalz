@@ -1,21 +1,46 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import HeaderApp from './components/HeaderApp/index.vue'
+
+const theme = ref('light')
+
+function setTheme (value: string) {
+  localStorage.setItem('theme', value)
+  document.querySelector('body')?.classList.remove('light')
+  document.querySelector('body')?.classList.remove('dark')
+  document.querySelector('body')?.classList.add(value)
+}
+
+function toggleTheme () {
+  theme.value = theme.value === 'light' ? 'dark' : 'light';
+  setTheme(theme.value)
+}
+
+onMounted(() => {
+  theme.value = localStorage.getItem('theme') ? String(localStorage.getItem('theme')) : 'light';
+  setTheme(theme.value)
+})
 </script>
 
 <template>
-  <HeaderApp title="Wallet Digital" />
+  <v-app :theme="theme">
+    <v-app-bar>
+      <HeaderApp class="header-app" title="Wallet Digital" />
+      <v-spacer></v-spacer>
+      <v-btn
+        :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+        @click="toggleTheme"
+      >{{ theme }}</v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <v-container>This application for manager your money and investiments</v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.header-app {
+  margin-left: 1rem;
 }
 </style>
