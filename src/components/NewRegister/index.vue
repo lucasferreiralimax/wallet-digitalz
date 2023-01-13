@@ -79,16 +79,17 @@ async function validate () {
         icon="mdi-pencil"
       />
     </template>
-    <v-card class="mx-auto" max-width="600" width="100%">
+    <v-card class="mx-auto pa-4" max-width="600" width="100%">
       <v-card-title>
         <span class="text-h5">{{ update ? 'Update Register' : 'Create Register' }}</span>
       </v-card-title>
       <v-card-text>
-        <v-container>
+        <v-container class="pa-0">
           <v-form v-model="valid" ref="myForm">
             <v-row>
               <v-col
                 cols="12"
+                class="pa-0"
               >
                 <v-text-field
                   label="Name*"
@@ -99,6 +100,7 @@ async function validate () {
               </v-col>
               <v-col
                 cols="12"
+                class="pa-0"
               >
                 <v-text-field
                   label="Value*"
@@ -111,6 +113,7 @@ async function validate () {
               </v-col>
               <v-col
                 cols="12"
+                class="pa-0"
               >
                 <v-textarea
                   label="Description*"
@@ -131,6 +134,7 @@ async function validate () {
           variant="text"
           @click="dialog = false"
         >
+          <v-icon class="mr-2" icon="mdi-cancel" />
           Cancel
         </v-btn>
         <v-btn
@@ -138,6 +142,7 @@ async function validate () {
           variant="flat"
           @click="validate"
         >
+          <v-icon class="mr-2" icon="mdi-check" />
           {{ update ? 'Save' : 'Create' }}
         </v-btn>
       </v-card-actions>
