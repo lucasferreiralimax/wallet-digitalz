@@ -13,7 +13,7 @@ const description = ref<string>('')
 
 const nameRules = [
   (v: string) => !!v || 'Name is required',
-  (v: string) => v.length <= 10 || 'Name must be less than 10 characters',
+  (v: string) => v.length <= 15 || 'Name must be less than 15 characters',
 ]
 
 const valueRules = [
