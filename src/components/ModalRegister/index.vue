@@ -88,7 +88,7 @@ async function validate () {
             <v-row>
               <v-col
                 cols="12"
-                class="pa-0"
+                class="pa-0 pb-2"
               >
                 <v-text-field
                   label="Name*"
@@ -99,7 +99,7 @@ async function validate () {
               </v-col>
               <v-col
                 cols="12"
-                class="pa-0"
+                class="pa-0 pb-2"
               >
                 <v-text-field
                   label="Value*"
@@ -112,7 +112,7 @@ async function validate () {
               </v-col>
               <v-col
                 cols="12"
-                class="pa-0"
+                class="pa-0 pb-2"
               >
                 <v-textarea
                   label="Description*"
@@ -124,7 +124,7 @@ async function validate () {
             </v-row>
           </v-form>
         </v-container>
-        <small>*indicates required field</small>
+        <small class="d-flex mt-4">*indicates required field</small>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
