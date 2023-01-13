@@ -3,13 +3,15 @@ import { ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid';
 import { useWalletStore } from '@/stores/wallet'
 
+const props = defineProps<{ update?: boolean, register?: any }>()
+
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
 const myForm = ref()
-const name = ref<string>('')
-const value = ref<number>(0)
-const description = ref<string>('')
+const name = ref<string>(props.register ? props.register.name : '')
+const value = ref<number>(props.register ? props.register.value : 0)
+const description = ref<string>(props.register ? props.register.description : '')
 
 const nameRules = [
   (v: string) => !!v || 'Name is required',
@@ -29,12 +31,23 @@ async function validate () {
   const { valid } = await myForm.value.validate()
 
   if (valid) {
-    wallet.newRegister({
-      id: uuidv4(),
+    const formData = {
       name: name.value,
       value: value.value,
       description: description.value
-    })
+    }
+
+    if (props.update) {
+      wallet.editRegister({
+        id: props.register.id,
+        ...formData
+      })
+    } else {
+      wallet.newRegister({
+        id: uuidv4(),
+        ...formData
+      })
+    }
 
     dialog.value = false
   }
@@ -49,16 +62,25 @@ async function validate () {
   >
     <template v-slot:activator="{ props }">
       <v-btn
+        v-if="!update"
         color="success"
         class="ma-2"
         v-bind="props"
       >
-        New Register
+        Create Register
       </v-btn>
+      <v-btn
+        v-if="update"
+        color="success"
+        class="float-right"
+        v-bind="props"
+        size="x-small"
+        icon="mdi-pencil"
+      />
     </template>
     <v-card class="mx-auto" max-width="600" width="100%">
       <v-card-title>
-        <span class="text-h5">Register</span>
+        <span class="text-h5">{{ update ? 'Update Register' : 'Create Register' }}</span>
       </v-card-title>
       <v-card-text>
         <v-container>
@@ -115,7 +137,7 @@ async function validate () {
           variant="flat"
           @click="validate"
         >
-          Save
+          {{ update ? 'Save' : 'Create' }}
         </v-btn>
       </v-card-actions>
     </v-card>
