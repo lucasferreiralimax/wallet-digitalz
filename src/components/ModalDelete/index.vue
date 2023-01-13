@@ -20,7 +20,7 @@ const wallet = useWalletStore()
         v-bind="props"
       />
     </template>
-    <v-card class="mx-auto pa-4" max-width="600" width="100%">
+    <v-card class="mx-auto pa-4">
       <v-card-title>
         <span class="text-h5">Delete register</span>
       </v-card-title>
