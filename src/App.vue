@@ -26,10 +26,7 @@ onMounted(() => {
 <template>
   <v-app :theme="theme">
     <v-app-bar>
-      <v-container
-        class="d-flex justify-space-between"
-        max-width="1200"
-      >
+      <v-container class="d-flex justify-space-between">
         <HeaderApp title="Wallet Digital" />
         <v-spacer></v-spacer>
         <v-btn
