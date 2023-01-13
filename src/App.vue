@@ -40,15 +40,9 @@ onMounted(() => {
       <v-container>
         <h2>Let's go</h2>
         <p>This application for manager your money and investiments</p>
-        <v-divider class="divider"></v-divider>
+        <v-divider class="divider my-2"></v-divider>
         <Registers />
       </v-container>
     </v-main>
   </v-app>
 </template>
-
-<style scoped>
-.divider {
-  margin: 1rem 0;
-}
-</style>
