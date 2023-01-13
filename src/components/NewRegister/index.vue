@@ -67,7 +67,8 @@ async function validate () {
         class="ma-2"
         v-bind="props"
       >
-        Create Register
+        <v-icon class="mr-2" icon="mdi-plus" />
+        Register
       </v-btn>
       <v-btn
         v-if="update"

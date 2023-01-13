@@ -19,11 +19,11 @@ function changeView() {
       <NewRegister />
       <v-btn v-if="wallet.registers.length" class="ma-2" @click="changeView">
         <template v-if="!panelChangeView">
-          <v-icon class="icon" icon="mdi-arrow-expand-vertical" />
+          <v-icon class="mr-2" icon="mdi-arrow-expand-vertical" />
           Expand All
         </template>
         <template v-else>
-          <v-icon class="icon" icon="mdi-arrow-collapse-vertical" />
+          <v-icon class="mr-2" icon="mdi-arrow-collapse-vertical" />
           Compact All
         </template>
       </v-btn>
@@ -48,9 +48,3 @@ function changeView() {
     </div>
   </div>
 </template>
-
-<style scoped>
-.icon {
-  margin-right: .5rem;
-}
-</style>
