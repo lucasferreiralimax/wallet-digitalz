@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
-import NewRegister from '@/components/NewRegister/index.vue'
+import ModalRegister from '@/components/ModalRegister/index.vue'
 
 const wallet = useWalletStore()
 const panel = ref<any[]>([])
@@ -16,7 +16,7 @@ function changeView() {
 <template>
   <div>
     <div class="text-center d-flex pb-4">
-      <NewRegister />
+      <ModalRegister />
       <v-btn v-if="wallet.registers.length" class="ma-2" @click="changeView">
         <template v-if="!panelChangeView">
           <v-icon class="mr-2" icon="mdi-arrow-expand-vertical" />
@@ -34,7 +34,7 @@ function changeView() {
           {{ item.name }} <span class="text-green pl-2">${{ Number(item.value).toFixed(2) }}</span>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
-          <NewRegister update :register="item" />
+          <ModalRegister update :register="item" />
           <v-btn color="error" size="x-small" class="mr-2 float-right" icon="mdi-delete"
             @click="wallet.deleteRegister(item.id)" />
           <pre class="pt-2">{{ item.description }}</pre>
