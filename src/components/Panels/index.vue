@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useWalletStore } from '../../stores/wallet'
-import NewRegister from '../NewRegister/index.vue'
+import { useWalletStore } from '@/stores/wallet'
+import NewRegister from '@/components/NewRegister/index.vue'
 
 const wallet = useWalletStore()
 const panel = ref<any[]>([])

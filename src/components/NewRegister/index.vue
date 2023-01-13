@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid';
-import { useWalletStore } from '../../stores/wallet'
+import { useWalletStore } from '@/stores/wallet'
 
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)

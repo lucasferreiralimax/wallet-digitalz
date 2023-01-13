@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import HeaderApp from './components/HeaderApp/index.vue'
-import Panels from './components/Panels/index.vue'
+import HeaderApp from '@/components/HeaderApp/index.vue'
+import Panels from '@/components/Panels/index.vue'
 
 const theme = ref('light')
 
