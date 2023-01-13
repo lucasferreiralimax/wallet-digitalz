@@ -12,7 +12,7 @@ watch(wallet, () => {
   walletPanels.value = wallet.registers.map((item) => item.id)
 })
 
-function changeView () {
+function changeView() {
   panel.value = !panelChangeView.value ? walletPanels.value : []
   panelChangeView.value = !panelChangeView.value;
 }
@@ -22,7 +22,7 @@ function changeView () {
   <div>
     <div class="text-center d-flex pb-4">
       <NewRegister />
-      <v-btn class="ma-2" @click="changeView">
+      <v-btn v-if="wallet.registers.length" class="ma-2" @click="changeView">
         <template v-if="!panelChangeView">
           <v-icon class="icon" icon="mdi-arrow-expand-vertical" />
           Expand All
@@ -34,16 +34,14 @@ function changeView () {
       </v-btn>
     </div>
     <v-expansion-panels v-model="panel">
-      <v-expansion-panel
-        v-for="item of wallet.registers"
-        :key="item.id"
-        :value="item.id"
-      >
+      <v-expansion-panel v-for="item of wallet.registers" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
           {{ item.name }} - {{ item.value }}
         </v-expansion-panel-title>
         <v-expansion-panel-text>
           {{ item.description }}
+          <v-btn color="error" size="x-small" class="float-right" icon="mdi-delete"
+            @click="wallet.deleteRegister(item.id)" />
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
