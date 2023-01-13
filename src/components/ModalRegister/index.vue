@@ -10,7 +10,7 @@ const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
 const myForm = ref()
 const name = ref<string>(props.register ? props.register.name : '')
-const value = ref<number>(props.register ? props.register.value : 0)
+const value = ref<number>(props.register ? props.register.value : undefined)
 const description = ref<string>(props.register ? props.register.description : '')
 
 const nameRules = [
