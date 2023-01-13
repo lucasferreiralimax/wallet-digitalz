@@ -9,9 +9,9 @@ const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
 const myForm = ref()
-const name = ref<string>(props.register ? props.register.name : '')
+const name = ref<string>(props.register ? props.register.name : undefined)
 const value = ref<number>(props.register ? props.register.value : undefined)
-const description = ref<string>(props.register ? props.register.description : '')
+const description = ref<string>(props.register ? props.register.description : undefined)
 
 const nameRules = [
   (v: string) => !!v || 'Name is required',
