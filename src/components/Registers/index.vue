@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import ModalRegister from '@/components/ModalRegister/index.vue'
+import ModalDelete from '@/components/ModalDelete/index.vue'
 
 const wallet = useWalletStore()
 const panel = ref<any[]>([])
@@ -36,8 +37,7 @@ function changeView() {
         <v-expansion-panel-text>
           <pre class="pt-2">{{ item.description }}</pre>
           <v-col class="d-flex justify-end pa-0 mt-2" width="100%">
-            <v-btn color="error" size="x-small" class="mr-2" icon="mdi-delete"
-              @click="wallet.deleteRegister(item.id)" />
+            <ModalDelete :register="item" />
             <ModalRegister update :register="item" />
           </v-col>
         </v-expansion-panel-text>
