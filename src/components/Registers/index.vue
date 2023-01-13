@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import NewRegister from '@/components/NewRegister/index.vue'
-import { Register } from '@/stores/wallet';
 
 const wallet = useWalletStore()
 const panel = ref<any[]>([])
 const panelChangeView = ref<boolean>(false)
-const walletPanels = ref(wallet.registers.map((item: Register) => item.id))
-const walletTotal = ref(wallet.registers.reduce((a: number, item: Register) => Number(item.value) + Number(a), 0))
-
-watch(wallet, () => {
-  walletPanels.value = wallet.registers.map((item: Register) => item.id)
-  walletTotal.value = wallet.registers.reduce((a: number, item: Register) => Number(item.value) + Number(a), 0)
-})
 
 function changeView() {
-  panel.value = !panelChangeView.value ? walletPanels.value : []
+  panel.value = !panelChangeView.value ? wallet.getIds : []
   panelChangeView.value = !panelChangeView.value;
 }
 </script>
@@ -48,8 +40,8 @@ function changeView() {
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
-    <div v-if="walletTotal" class="d-flex pa-4">
-      <h2>Total ${{ walletTotal }}</h2>
+    <div v-if="wallet.getTotal" class="d-flex pa-4">
+      <h2>Total ${{ Number(wallet.getTotal).toFixed(2) }}</h2>
     </div>
   </div>
 </template>

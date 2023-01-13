@@ -18,6 +18,10 @@ export const useWalletStore = defineStore('wallet', {
       registers: useStorage('my-wallet', []), // @TODO adjustment type
     }
   },
+  getters: {
+    getIds: (state) => state.registers.map((item: Register) => item.id),
+    getTotal: (state) => state.registers.reduce((a: number, item: Register) => Number(item.value) + Number(a), 0),
+  },
   actions: {
     newRegister(register: Register) {
       this.registers.push(register)
