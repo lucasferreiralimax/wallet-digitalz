@@ -37,7 +37,7 @@ function changeView() {
           <NewRegister update :register="item" />
           <v-btn color="error" size="x-small" class="mr-2 float-right" icon="mdi-delete"
             @click="wallet.deleteRegister(item.id)" />
-          <p class="pt-2">{{ item.description }}</p>
+          <pre class="pt-2">{{ item.description }}</pre>
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
