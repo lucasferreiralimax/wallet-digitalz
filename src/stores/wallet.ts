@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 
-type Register = {
+export type Register = {
   id: string;
   name: string;
   value: number;
@@ -9,13 +9,13 @@ type Register = {
 }
 
 interface State {
-  registers: Register[]
+  registers: any; // @TODO adjustment type
 }
 
 export const useWalletStore = defineStore('wallet', {
   state: (): State => {
     return {
-      registers: useStorage('my-wallet', [] as Register[]).value,
+      registers: useStorage('my-wallet', []), // @TODO adjustment type
     }
   },
   actions: {
@@ -23,11 +23,11 @@ export const useWalletStore = defineStore('wallet', {
       this.registers.push(register)
     },
     editRegister(register: Register) {
-      const itemIndex = this.registers.findIndex(item => item.id == register.id)
+      const itemIndex = this.registers.findIndex((item: Register) => item.id == register.id)
       this.registers[itemIndex] = register;
     },
     deleteRegister(id: string) {
-      this.registers = this.registers.filter(item => item.id !== id)
+      this.registers = this.registers.filter((item: Register) => item.id !== id)
     },
   },
 })

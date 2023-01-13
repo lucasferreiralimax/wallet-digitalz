@@ -2,14 +2,15 @@
 import { ref, watch } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import NewRegister from '@/components/NewRegister/index.vue'
+import { Register } from '@/stores/wallet';
 
 const wallet = useWalletStore()
 const panel = ref<any[]>([])
 const panelChangeView = ref<boolean>(false)
-const walletPanels = ref(wallet.registers.map((item) => item.id))
+const walletPanels = ref(wallet.registers.map((item: Register) => item.id))
 
 watch(wallet, () => {
-  walletPanels.value = wallet.registers.map((item) => item.id)
+  walletPanels.value = wallet.registers.map((item: Register) => item.id)
 })
 
 function changeView() {

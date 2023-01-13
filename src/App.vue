@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import HeaderApp from '@/components/HeaderApp/index.vue'
-import Panels from '@/components/Panels/index.vue'
+import Registers from '@/components/Registers/index.vue'
 
 const theme = ref('light')
 
@@ -44,7 +44,7 @@ onMounted(() => {
         <h2>Let's go</h2>
         <p>This application for manager your money and investiments</p>
         <v-divider class="divider"></v-divider>
-        <Panels />
+        <Registers />
       </v-container>
     </v-main>
   </v-app>
