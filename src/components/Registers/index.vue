@@ -31,17 +31,19 @@ function changeView() {
     <v-expansion-panels v-model="panel">
       <v-expansion-panel v-for="item of wallet.registers" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
-          {{ item.name }} - ${{ Number(item.value).toFixed(2) }}
+          {{ item.name }} <span class="text-green pl-2">${{ Number(item.value).toFixed(2) }}</span>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
-          {{ item.description }}
           <v-btn color="error" size="x-small" class="float-right" icon="mdi-delete"
             @click="wallet.deleteRegister(item.id)" />
+          <p class="pt-2">{{ item.description }}</p>
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
     <div v-if="wallet.getTotal" class="d-flex pa-4">
-      <h2>Total ${{ Number(wallet.getTotal).toFixed(2) }}</h2>
+      <h2>
+        Total <b class="text-green">${{ Number(wallet.getTotal).toFixed(2) }}</b>
+      </h2>
     </div>
   </div>
 </template>
