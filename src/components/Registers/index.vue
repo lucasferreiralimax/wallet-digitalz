@@ -34,10 +34,12 @@ function changeView() {
           {{ item.name }} <span class="text-green pl-2">${{ Number(item.value).toFixed(2) }}</span>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
-          <ModalRegister update :register="item" />
-          <v-btn color="error" size="x-small" class="mr-2 float-right" icon="mdi-delete"
-            @click="wallet.deleteRegister(item.id)" />
           <pre class="pt-2">{{ item.description }}</pre>
+          <v-col class="d-flex justify-end pa-0 mt-2" width="100%">
+            <v-btn color="error" size="x-small" class="mr-2" icon="mdi-delete"
+              @click="wallet.deleteRegister(item.id)" />
+            <ModalRegister update :register="item" />
+          </v-col>
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>

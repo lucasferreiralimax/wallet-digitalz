@@ -73,7 +73,6 @@ async function validate () {
       <v-btn
         v-if="update"
         color="success"
-        class="float-right"
         v-bind="props"
         size="x-small"
         icon="mdi-pencil"
