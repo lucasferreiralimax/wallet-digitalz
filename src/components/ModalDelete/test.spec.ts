@@ -3,7 +3,16 @@ import { shallowMount } from '@vue/test-utils'
 
 import ModalDelete from './index.vue'
 
-const wrapper = shallowMount(ModalDelete)
+const wrapper = shallowMount(ModalDelete, {
+  propsData: {
+    register: {
+      id: 'test-1',
+      name: 'Test',
+      value: 1000,
+      description: 'Descriiption test example spec'
+    }
+  }
+})
 
 describe('Basic render ModalDelete', () => {
   it('is ModalDelete a vue instance', () => {
