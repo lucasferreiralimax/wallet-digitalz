@@ -8,9 +8,11 @@ const wallet = useWalletStore()
 const panel = ref<any[]>([])
 const panelChangeView = ref<boolean>(false)
 const walletPanels = ref(wallet.registers.map((item: Register) => item.id))
+const walletTotal = ref(wallet.registers.reduce((a: number, item: Register) => Number(item.value) + Number(a), 0))
 
 watch(wallet, () => {
   walletPanels.value = wallet.registers.map((item: Register) => item.id)
+  walletTotal.value = wallet.registers.reduce((a: number, item: Register) => Number(item.value) + Number(a), 0)
 })
 
 function changeView() {
@@ -37,7 +39,7 @@ function changeView() {
     <v-expansion-panels v-model="panel">
       <v-expansion-panel v-for="item of wallet.registers" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
-          {{ item.name }} - {{ item.value }}
+          {{ item.name }} - ${{ Number(item.value).toFixed(2) }}
         </v-expansion-panel-title>
         <v-expansion-panel-text>
           {{ item.description }}
@@ -46,6 +48,9 @@ function changeView() {
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
+    <div v-if="walletTotal" class="d-flex pa-4">
+      <h2>Total ${{ walletTotal }}</h2>
+    </div>
   </div>
 </template>
 
