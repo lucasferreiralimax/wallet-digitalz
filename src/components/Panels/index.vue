@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useWalletStore } from '../../stores/wallet'
 import NewRegister from '../NewRegister/index.vue'
 
-const panel = ref<string[]>([])
+const wallet = useWalletStore()
+const panel = ref<any[]>([])
 const panelChangeView = ref<boolean>(false)
+const walletPanels = ref(wallet.registers.map((item) => item.id))
+
+watch(wallet, () => {
+  walletPanels.value = wallet.registers.map((item) => item.id)
+})
 
 function changeView () {
-  panel.value = !panelChangeView.value ? ['foo', 'bar', 'baz'] : []
+  panel.value = !panelChangeView.value ? walletPanels.value : []
   panelChangeView.value = !panelChangeView.value;
 }
 </script>
@@ -26,27 +33,19 @@ function changeView () {
         </template>
       </v-btn>
     </div>
-    <v-expansion-panels
-      v-model="panel"
-      multiple
-    >
+    <v-expansion-panels v-model="panel">
       <v-expansion-panel
-        title="Foo"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        value="foo"
-      ></v-expansion-panel>
-
-      <v-expansion-panel
-        title="Bar"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        value="bar"
-      ></v-expansion-panel>
-
-      <v-expansion-panel
-        title="Baz"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        value="baz"
-      ></v-expansion-panel>
+        v-for="item of wallet.registers"
+        :key="item.id"
+        :value="item.id"
+      >
+        <v-expansion-panel-title>
+          {{ item.name }} - {{ item.value }}
+        </v-expansion-panel-title>
+        <v-expansion-panel-text>
+          {{ item.description }}
+        </v-expansion-panel-text>
+      </v-expansion-panel>
     </v-expansion-panels>
   </div>
 </template>
