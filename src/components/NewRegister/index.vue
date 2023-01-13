@@ -1,7 +1,45 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { v4 as uuidv4 } from 'uuid';
+import { useWalletStore } from '../../stores/wallet'
 
+const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
+const valid = ref<boolean>(false)
+const myForm = ref()
+const name = ref<string>('')
+const value = ref<number>(0)
+const description = ref<string>('')
+
+const nameRules = [
+  (v: string) => !!v || 'Name is required',
+  (v: string) => v.length <= 10 || 'Name must be less than 10 characters',
+]
+
+const valueRules = [
+  (v: string) => !!v || 'Value is required'
+]
+
+const descriptionRules = [
+  (v: string) => v.length > 20 || 'Description must be more than 20 characters',
+  (v: string) => v.length <= 250 || 'Description must be less than 250 characters',
+]
+
+async function validate () {
+  const { valid } = await myForm.value.validate()
+
+  if (valid) {
+    wallet.newRegister({
+      id: uuidv4(),
+      name: name.value,
+      value: value.value,
+      description: description.value
+    })
+
+    dialog.value = false
+  }
+}
+
 </script>
 
 <template>
@@ -24,32 +62,42 @@ const dialog = ref<boolean>(false)
       </v-card-title>
       <v-card-text>
         <v-container>
-          <v-row>
-            <v-col
-              cols="12"
-            >
-              <v-text-field
-                label="Name*"
-                required
-              ></v-text-field>
-            </v-col>
-            <v-col
-              cols="12"
-            >
-              <v-text-field
-                label="Value*"
-                required
-              ></v-text-field>
-            </v-col>
-            <v-col
-              cols="12"
-            >
-              <v-text-field
-                label="Description*"
-                required
-              ></v-text-field>
-            </v-col>
-          </v-row>
+          <v-form v-model="valid" ref="myForm">
+            <v-row>
+              <v-col
+                cols="12"
+              >
+                <v-text-field
+                  label="Name*"
+                  v-model="name"
+                  :rules="nameRules"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col
+                cols="12"
+              >
+                <v-text-field
+                  label="Value*"
+                  v-model="value"
+                  prefix="$"
+                  type="number"
+                  :rules="valueRules"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col
+                cols="12"
+              >
+                <v-textarea
+                  label="Description*"
+                  v-model="description"
+                  :rules="descriptionRules"
+                  required
+                ></v-textarea>
+              </v-col>
+            </v-row>
+          </v-form>
         </v-container>
         <small>*indicates required field</small>
       </v-card-text>
@@ -65,7 +113,7 @@ const dialog = ref<boolean>(false)
         <v-btn
           color="success"
           variant="flat"
-          @click="dialog = false"
+          @click="validate"
         >
           Save
         </v-btn>
