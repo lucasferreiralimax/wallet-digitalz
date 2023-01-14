@@ -1,4 +1,4 @@
-# Wallet Digital
+# Wallet Digitalz
 
 This project is a application for manager your money and investiment
 

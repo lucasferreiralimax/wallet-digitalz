@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import HeaderApp from '@/components/HeaderApp/index.vue'
 import Registers from '@/components/Registers/index.vue'
 
 const theme = ref('light')
@@ -27,7 +26,7 @@ onMounted(() => {
   <v-app :theme="theme">
     <v-app-bar>
       <v-container class="d-flex justify-space-between">
-        <HeaderApp title="Wallet Digital" />
+        <h1><v-icon class="mr-2" icon="mdi-wallet" />Wallet Digitalz</h1>
         <v-spacer></v-spacer>
         <v-btn
           :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
