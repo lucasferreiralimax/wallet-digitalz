@@ -7,6 +7,7 @@ const wrapper = shallowMount(ModalDelete, {
   propsData: {
     register: {
       id: 'test-1',
+      type: 'Investiment',
       name: 'Test',
       value: 1000,
       description: 'Descriiption test example spec'
