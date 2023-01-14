@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import Registers from '@/components/Registers/index.vue'
+import Language from '@/components/Language/index.vue'
 
 const theme = ref('light')
 
@@ -28,6 +29,7 @@ onMounted(() => {
       <v-container class="d-flex justify-space-between">
         <h1><v-icon class="mr-2" icon="mdi-wallet" />Wallet Digitalz</h1>
         <v-spacer></v-spacer>
+        <Language />
         <v-btn
           :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
           @click="toggleTheme"
@@ -37,8 +39,8 @@ onMounted(() => {
 
     <v-main>
       <v-container>
-        <h2>Let's go</h2>
-        <p>This application for manager your money and investiments</p>
+        <h2>{{ $t('home.lets') }}</h2>
+        <p>{{ $t('home.about') }}</p>
         <v-divider class="divider my-2"></v-divider>
         <Registers />
       </v-container>

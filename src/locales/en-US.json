@@ -1,0 +1,17 @@
+{
+  "languages": {
+    "pt": "Portuguese",
+    "en": "English"
+  },
+  "home": {
+    "lets": "Let's go",
+    "about": "This application for manager your money and investiments",
+    "total": "Total",
+    "totalExpense": "Expense total"
+  },
+  "actions": {
+    "register": "Register",
+    "expand": "Expand All",
+    "compact": "Compact All"
+  }
+}

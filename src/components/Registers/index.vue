@@ -30,11 +30,11 @@ console.log(wallet.getExpensesTotal);
       <v-btn v-if="wallet.registers.length" class="ma-2" @click="changeView">
         <template v-if="!panelChangeView">
           <v-icon class="mr-2" icon="mdi-arrow-expand-vertical" />
-          Expand All
+          {{ $t('actions.expand') }}
         </template>
         <template v-else>
           <v-icon class="mr-2" icon="mdi-arrow-collapse-vertical" />
-          Compact All
+          {{ $t('actions.compact') }}
         </template>
       </v-btn>
     </div>
@@ -57,10 +57,10 @@ console.log(wallet.getExpensesTotal);
     </v-expansion-panels>
     <div v-if="wallet.getTotal" class="d-flex pa-4">
       <h2 class="mr-2">
-        Total <b class="text-green">${{ Number(wallet.getTotal).toFixed(2) }}</b>
+        {{ $t('home.total') }} <b class="text-green">${{ Number(wallet.getTotal).toFixed(2) }}</b>
       </h2>
       <p class="mt-2" v-if="wallet.getExpensesTotal">
-        Expenses total: <b class="text-red">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b>
+        {{ $t('home.totalExpense') }}: <b class="text-red">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b>
       </p>
     </div>
   </div>

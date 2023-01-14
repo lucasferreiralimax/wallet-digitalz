@@ -8,6 +8,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import i18n from './i18n'
 
 const vuetify = createVuetify({
   components,
@@ -21,4 +22,4 @@ const vuetify = createVuetify({
   },
 })
 
-createApp(App).use(createPinia()).use(vuetify).mount('#app')
+createApp(App).use(i18n()).use(createPinia()).use(vuetify).mount('#app')

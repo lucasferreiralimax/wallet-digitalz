@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { useWalletStore } from '@/stores/wallet'
 
 const props = defineProps<{ update?: boolean, register?: any }>()
-
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
@@ -73,7 +72,7 @@ async function validate () {
         v-bind="props"
       >
         <v-icon class="mr-2" icon="mdi-plus" />
-        Register
+        {{ $t('actions.register') }}
       </v-btn>
       <v-btn
         v-if="update"

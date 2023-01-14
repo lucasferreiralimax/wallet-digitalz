@@ -1,0 +1,17 @@
+{
+  "languages": {
+    "pt": "Portuguese",
+    "en": "English"
+  },
+  "home": {
+    "lets": "Comece agora",
+    "about": "Este aplicativo e para gerenciar seu dinheiro e investimentos",
+    "total": "Total",
+    "totalExpense": "Total de despesas"
+  },
+  "actions": {
+    "register": "Registro",
+    "expand": "Expandir todos",
+    "compact": "Compactar todos"
+  }
+}
