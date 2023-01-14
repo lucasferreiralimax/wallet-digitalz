@@ -13,7 +13,8 @@ export const useWalletStore = defineStore('wallet', {
   },
   getters: {
     getIds: (state) => state.registers.map((item: Register) => item.id),
-    getTotal: (state) => state.registers.reduce((a: number, item: Register) => Number(item.value) + Number(a), 0),
+    getExpensesTotal: (state) => state.registers.filter((item: any) => item.type == "Expenses").reduce((a: number, item: Register) => Number(item.value) + Number(a), 0),
+    getTotal: (state) => state.registers.filter((item: any) => item.type == "Investiment" || item.type == "Entry").reduce((a: number, item: Register) => Number(item.value) + Number(a), 0),
   },
   actions: {
     newRegister(register: Register) {

@@ -9,9 +9,14 @@ const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
 const myForm = ref()
+const týpeRegister = ref<string>(props.register ? props.register.týpe : undefined)
 const name = ref<string>(props.register ? props.register.name : undefined)
 const value = ref<number>(props.register ? props.register.value : undefined)
 const description = ref<string>(props.register ? props.register.description : undefined)
+
+const typeRules = [
+  (v: string) => !!v || 'Type is required'
+]
 
 const nameRules = [
   (v: string) => !!v || 'Name is required',
@@ -33,6 +38,7 @@ async function validate () {
   if (valid) {
     const formData = {
       name: name.value,
+      type: týpeRegister.value,
       value: value.value,
       description: description.value
     }
@@ -52,7 +58,6 @@ async function validate () {
     dialog.value = false
   }
 }
-
 </script>
 
 <template>
@@ -86,6 +91,17 @@ async function validate () {
         <v-container class="pa-0">
           <v-form v-model="valid" ref="myForm">
             <v-row>
+              <v-col
+                cols="12"
+                class="pa-0 pb-2"
+              >
+                <v-select
+                  label="Type of register"
+                  v-model="týpeRegister"
+                  :rules="typeRules"
+                  :items="['Investiment', 'Expenses', 'Entry']"
+                />
+              </v-col>
               <v-col
                 cols="12"
                 class="pa-0 pb-2"

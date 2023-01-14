@@ -13,6 +13,14 @@ function changeView() {
   panel.value = !panelChangeView.value ? wallet.getIds : []
   panelChangeView.value = !panelChangeView.value;
 }
+
+const typeColors: any = {
+  'Investiment': 'text-green',
+  'Expenses': 'text-red',
+  'Entry': 'text-blue'
+}
+
+console.log(wallet.getExpensesTotal);
 </script>
 
 <template>
@@ -33,7 +41,10 @@ function changeView() {
     <v-expansion-panels v-model="panel">
       <v-expansion-panel v-for="item of wallet.registers" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
-          {{ item.name }} <span class="text-green pl-2">${{ Number(item.value).toFixed(2) }}</span>
+          {{ item.name }} {{ item.type }}
+          <span class="pl-2" :class="[typeColors[item.type]]">
+            ${{ Number(item.value).toFixed(2) }}
+          </span>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
           <pre class="pt-2 font-weight-regular">{{ item.description }}</pre>
@@ -45,9 +56,12 @@ function changeView() {
       </v-expansion-panel>
     </v-expansion-panels>
     <div v-if="wallet.getTotal" class="d-flex pa-4">
-      <h2>
+      <h2 class="mr-2">
         Total <b class="text-green">${{ Number(wallet.getTotal).toFixed(2) }}</b>
       </h2>
+      <p class="mt-2" v-if="wallet.getExpensesTotal">
+        Expenses total: <b class="text-red">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b>
+      </p>
     </div>
   </div>
 </template>
