@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
+import { Register } from '@/types'
 
-const props = defineProps<{ register?: any }>()
+const props = defineProps<{ register: Register }>()
 const dialog = ref<boolean>(false)
 const wallet = useWalletStore()
 </script>

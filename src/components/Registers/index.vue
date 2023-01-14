@@ -3,9 +3,10 @@ import { ref } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import ModalRegister from '@/components/ModalRegister/index.vue'
 import ModalDelete from '@/components/ModalDelete/index.vue'
+import { RegisterIds } from '@/types'
 
 const wallet = useWalletStore()
-const panel = ref<any[]>([])
+const panel = ref<RegisterIds[]>([])
 const panelChangeView = ref<boolean>(false)
 
 function changeView() {
@@ -35,7 +36,7 @@ function changeView() {
           {{ item.name }} <span class="text-green pl-2">${{ Number(item.value).toFixed(2) }}</span>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
-          <pre class="pt-2">{{ item.description }}</pre>
+          <pre class="pt-2 font-weight-regular">{{ item.description }}</pre>
           <v-col class="d-flex justify-end pa-0 mt-2" width="100%">
             <ModalDelete :register="item" />
             <ModalRegister update :register="item" />

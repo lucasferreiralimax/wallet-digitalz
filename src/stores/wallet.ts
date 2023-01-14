@@ -1,13 +1,6 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
-
-export type Register = {
-  id: string;
-  name: string;
-  value: number;
-  description: string;
-}
-
+import { Register } from '@/types'
 interface State {
   registers: any; // @TODO adjustment type
 }
