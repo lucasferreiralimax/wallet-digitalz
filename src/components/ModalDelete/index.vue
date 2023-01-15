@@ -26,7 +26,7 @@ const wallet = useWalletStore()
         <span class="text-h5">{{ $t('register.delete') }}</span>
       </v-card-title>
       <v-card-text>
-        Do you want delete this {{ register.name }} register?
+        {{ $t('register.deleteMsg', { name: register.name }) }}
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>

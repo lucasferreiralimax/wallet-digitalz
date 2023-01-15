@@ -8,7 +8,8 @@
   "register": {
     "create": "Criar registro",
     "update": "Atualizar registro",
-    "delete": "Eliminar registro",
+    "delete": "Deletar registro",
+    "deleteMsg": "Você deseja deletar o registro {name}?",
     "form": {
       "type": "Tipo do registro *",
       "name": "Nome do registro *",
