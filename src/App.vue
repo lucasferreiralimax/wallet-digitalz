@@ -55,7 +55,7 @@ onMounted(() => {
       <v-divider />
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main class="main">
       <v-container>
         <template v-if="!wallet.registers.length">
           <h2>{{ $t('home.lets') }}</h2>
@@ -67,3 +67,9 @@ onMounted(() => {
     </v-main>
   </v-app>
 </template>
+
+<style scoped>
+.main {
+  background: rgba(var(--v-theme-main));
+}
+</style>

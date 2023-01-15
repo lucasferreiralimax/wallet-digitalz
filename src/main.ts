@@ -20,6 +20,17 @@ const vuetify = createVuetify({
       mdi,
     },
   },
+  theme: {
+    defaultTheme: 'dark',
+    themes: {
+      light: {
+        dark: false,
+        colors: {
+          main: '#eee'
+        }
+      }
+    }
+  }
 })
 
 createApp(App).use(i18n()).use(createPinia()).use(vuetify).mount('#app')
