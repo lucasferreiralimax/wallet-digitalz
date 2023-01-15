@@ -13,7 +13,7 @@ watch(locale, (val) => {
 <template>
   <div class="app-language mr-2">
     <v-select
-      :append-inner-icon="false"
+      append-inner-icon=""
       v-model="locale"
       single-line
       :items="[...supportLocales]"
