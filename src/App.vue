@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useWalletStore } from '@/stores/wallet'
 import Registers from '@/components/Registers/index.vue'
 import Language from '@/components/Language/index.vue'
 
+const wallet = useWalletStore()
 const theme = ref('light')
 
 function setTheme (value: string) {
@@ -39,9 +41,11 @@ onMounted(() => {
 
     <v-main>
       <v-container>
-        <h2>{{ $t('home.lets') }}</h2>
-        <p>{{ $t('home.about') }}</p>
-        <v-divider class="divider my-2"></v-divider>
+        <template v-if="!wallet.registers.length">
+          <h2>{{ $t('home.lets') }}</h2>
+          <p>{{ $t('home.about') }}</p>
+          <v-divider class="divider my-2"></v-divider>
+        </template>
         <Registers />
       </v-container>
     </v-main>
