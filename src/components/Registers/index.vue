@@ -15,9 +15,9 @@ function changeView() {
 }
 
 const typeColors: any = {
-  'Investiment': 'text-green',
-  'Expenses': 'text-red',
-  'Entry': 'text-blue'
+  'investiment': 'text-green',
+  'expense': 'text-red',
+  'entry': 'text-blue'
 }
 </script>
 
@@ -39,8 +39,8 @@ const typeColors: any = {
     <v-expansion-panels v-model="panel">
       <v-expansion-panel v-for="item of wallet.registers" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
-          {{ item.name }} {{ item.type }}
-          <span class="pl-2" :class="[typeColors[item.type]]">
+          {{ item.name }} {{ $t(`register.form.${item.type.value}`) }}
+          <span class="pl-2" :class="[typeColors[item.type.value]]">
             ${{ Number(item.value).toFixed(2) }}
           </span>
         </v-expansion-panel-title>

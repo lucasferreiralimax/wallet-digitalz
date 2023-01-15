@@ -2,16 +2,17 @@
 import { ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid';
 import { useWalletStore } from '@/stores/wallet'
+import { TypeRegister, Register } from '@/types'
 
-const props = defineProps<{ update?: boolean, register?: any }>()
+const props = defineProps<{ update?: boolean, register: Register }>()
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
 const myForm = ref()
-const typeRegister = ref<string>(props.register ? props.register.type : undefined)
-const name = ref<string>(props.register ? props.register.name : undefined)
-const value = ref<number>(props.register ? props.register.value : undefined)
-const description = ref<string>(props.register ? props.register.description : undefined)
+const typeRegister = ref<TypeRegister | undefined>(props.register ? props.register.type : undefined)
+const name = ref<string | undefined>(props.register ? props.register.name : undefined)
+const value = ref<number | undefined>(props.register ? props.register.value : undefined)
+const description = ref<string | undefined>(props.register ? props.register.description : undefined)
 
 const typeRules = [
   (v: string) => !!v || 'Type is required'
@@ -38,27 +39,30 @@ function close () {
 }
 
 async function validate () {
+  const { valid } = await myForm.value.validate()
 
-  const formData = {
-    name: name.value,
-    type: typeRegister.value,
-    value: value.value,
-    description: description.value
+  if (valid) {
+    const formData = {
+      name: name.value,
+      type: typeRegister.value,
+      value: value.value,
+      description: description.value
+    }
+
+    if (props.update) {
+      wallet.editRegister({
+        id: props.register.id,
+        ...formData
+      })
+    } else {
+      wallet.newRegister({
+        id: uuidv4(),
+        ...formData
+      })
+    }
+
+    close()
   }
-
-  if (props.update) {
-    wallet.editRegister({
-      id: props.register.id,
-      ...formData
-    })
-  } else {
-    wallet.newRegister({
-      id: uuidv4(),
-      ...formData
-    })
-  }
-
-  close()
 }
 </script>
 
@@ -87,7 +91,7 @@ async function validate () {
     </template>
     <v-card class="mx-auto pa-4" max-width="600" width="100%">
       <v-card-title>
-        <span class="text-h5">{{ update ? 'Update Register' : 'Create Register' }}</span>
+        <span class="text-h5">{{ update ? $t('register.update') : $t('register.create') }}</span>
       </v-card-title>
       <v-card-text>
         <v-container class="pa-0">
@@ -98,10 +102,18 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-select
-                  label="Type of register"
+                  :label="$t('register.form.type')"
                   v-model="typeRegister"
                   :rules="typeRules"
-                  :items="['Investiment', 'Expenses', 'Entry']"
+                  item-title="label"
+                  item-value="value"
+                  return-object
+                  single-line
+                  :items="[
+                    { label: $t('register.form.investiment'), value: 'investiment' },
+                    { label: $t('register.form.expense'), value: 'expense' },
+                    { label: $t('register.form.entry'), value: 'entry' },
+                  ]"
                 />
               </v-col>
               <v-col
@@ -109,7 +121,7 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-text-field
-                  label="Name*"
+                :label="$t('register.form.name')"
                   v-model="name"
                   :rules="nameRules"
                   required
@@ -120,7 +132,7 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-text-field
-                  label="Value*"
+                :label="$t('register.form.value')"
                   v-model="value"
                   prefix="$"
                   type="number"
@@ -133,7 +145,7 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-textarea
-                  label="Description*"
+                :label="$t('register.form.description')"
                   v-model="description"
                   :rules="descriptionRules"
                   required
@@ -142,7 +154,7 @@ async function validate () {
             </v-row>
           </v-form>
         </v-container>
-        <small class="d-flex mt-4">*indicates required field</small>
+        <small class="d-flex mt-4">{{ $t('register.form.indicates') }}</small>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -152,16 +164,15 @@ async function validate () {
           @click="close"
         >
           <v-icon class="mr-2" icon="mdi-cancel" />
-          Cancel
+          {{ $t('actions.cancel') }}
         </v-btn>
         <v-btn
           color="success"
           variant="flat"
           @click="validate"
-          :disabled="!valid"
         >
           <v-icon class="mr-2" icon="mdi-check" />
-          {{ update ? 'Save' : 'Create' }}
+          {{ update ? $t('actions.save') : $t('actions.create') }}
         </v-btn>
       </v-card-actions>
     </v-card>

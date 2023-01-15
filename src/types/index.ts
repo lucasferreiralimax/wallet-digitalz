@@ -1,10 +1,14 @@
+export type TypeRegister = {
+  label: string;
+  value: string;
+}
 
 export type Register = {
   id: string;
-  type: string;
-  name: string;
-  value: number;
-  description: string;
+  type: TypeRegister | undefined;
+  name: string | undefined;
+  value: number | undefined;
+  description: string | undefined;
 }
 
 export type RegisterIds = {
