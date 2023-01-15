@@ -72,11 +72,11 @@ const typeColors: any = {
         <span class="text-caption text-uppercase">{{ $t('register.form.investiment') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase">
-        <b class="text-yellow text-h5 mr-2">${{ Number(wallet.getTotalLessExpense).toFixed(2) }}</b>
+        <b class="text-amber-darken-2 text-h5 mr-2">${{ Number(wallet.getTotalLessExpense).toFixed(2) }}</b>
         {{ $t('home.liquid') }}
       </p>
       <p class="d-flex align-center justify-end text-uppercase">
-        <b class="text-green text-h4 mr-2">${{ Number(wallet.getTotal).toFixed(2) }}</b>
+        <b class="text-light-green text-h4 mr-2">${{ Number(wallet.getTotal).toFixed(2) }}</b>
         {{ $t('home.money') }}
       </p>
     </div>
