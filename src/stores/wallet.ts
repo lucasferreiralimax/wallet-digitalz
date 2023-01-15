@@ -12,20 +12,20 @@ export const useWalletStore = defineStore('wallet', {
     }
   },
   getters: {
-    getIds: (state) => state.registers.map((item: Register) => item.id),
-    getExpensesTotal: (state) => state.registers.filter((item: any) => item.type == "Expenses").reduce((a: number, item: Register) => Number(item.value) + Number(a), 0),
-    getTotal: (state) => state.registers.filter((item: any) => item.type == "Investiment" || item.type == "Entry").reduce((a: number, item: Register) => Number(item.value) + Number(a), 0),
+    getIds: ({ registers }) => registers.map(({ id }: Register) => id),
+    getExpensesTotal: ({ registers })  => registers.filter(({ type: { value }} : any) => value == "expense").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
+    getTotal: ({ registers })  => registers.filter(({ type: { value }} : any) => value == "investiment" || value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
   },
   actions: {
     newRegister(register: Register) {
       this.registers.push(register)
     },
     editRegister(register: Register) {
-      const itemIndex = this.registers.findIndex((item: Register) => item.id == register.id)
+      const itemIndex = this.registers.findIndex(({ id }: Register) => id == register.id)
       this.registers[itemIndex] = register;
     },
-    deleteRegister(id: string) {
-      this.registers = this.registers.filter((item: Register) => item.id !== id)
+    deleteRegister(target: string) {
+      this.registers = this.registers.filter(({ id }: Register) => id !== target)
     },
   },
 })
