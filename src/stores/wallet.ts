@@ -15,15 +15,10 @@ export const useWalletStore = defineStore('wallet', {
   getters: {
     getIds: ({ registers }) => registers.map(({ id }: Register) => id),
     getRegisters: ({ registers })  => {
-      const entrys = registers.filter(({ type: { value }} : typeValue) => value == "entry");
-      const expenses = registers.filter(({ type: { value }} : typeValue) => value == "expense");
-      const investiments = registers.filter(({ type: { value }} : typeValue) => value == "investiment");
-
-      return [
-        ...entrys,
-        ...investiments,
-        ...expenses
-      ]
+      const entrys = registers.filter(({ type: { value }} : typeValue) => value == "entry")
+      const expenses = registers.filter(({ type: { value }} : typeValue) => value == "expense")
+      const investiments = registers.filter(({ type: { value }} : typeValue) => value == "investiment")
+      return [...entrys, ...investiments, ...expenses]
     },
     getEntryTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
     getExpensesTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "expense").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
