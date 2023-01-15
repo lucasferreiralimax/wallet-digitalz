@@ -9,7 +9,24 @@
     "total": "Total",
     "totalExpense": "Total de despesas"
   },
+  "register": {
+    "create": "Criar registro",
+    "update": "Atualizar registro",
+    "form": {
+      "type": "Tipo do registro *",
+      "name": "Nome do registro *",
+      "value": "Valor do registro *",
+      "description": "Descrição do registro *",
+      "indicates": "* indica campo obrigatório",
+      "investiment": "Investimento",
+      "expense": "Despesa",
+      "entry": "Entrada"
+    }
+  },
   "actions": {
+    "create": "Criar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
     "register": "Registro",
     "expand": "Expandir todos",
     "compact": "Compactar todos"

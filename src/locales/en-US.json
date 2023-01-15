@@ -9,7 +9,24 @@
     "total": "Total",
     "totalExpense": "Expense total"
   },
+  "register": {
+    "create": "Create register",
+    "update": "Update register",
+    "form": {
+      "type": "Type of register *",
+      "name": "Name of register *",
+      "value": "Value of register *",
+      "description": "Description of register *",
+      "indicates": "* indicates required field",
+      "investiment": "Investiment",
+      "expense": "Expense",
+      "entry": "Entry"
+    }
+  },
   "actions": {
+    "create": "Create",
+    "save": "Save",
+    "cancel": "Cancel",
     "register": "Register",
     "expand": "Expand All",
     "compact": "Compact All"
