@@ -1,0 +1,32 @@
+{
+  "home": {
+    "lets": "Comience sus registros ahora",
+    "about": "Esta aplicación es para ayudarlo a administrar su dinero, gastos e inversiones.",
+    "money": "Dinero",
+    "expense": "Gastos"
+  },
+  "register": {
+    "create": "Crear registro",
+    "update": "Actualizar registro",
+    "delete": "Deletar registro",
+    "form": {
+      "type": "Tipo do registro *",
+      "name": "Nombre do registro *",
+      "value": "Valor do registro *",
+      "description": "Descripción do registro *",
+      "indicates": "* indica un campo obligatorio",
+      "investiment": "Inversión",
+      "expense": "Gasto",
+      "entry": "Ingresso"
+    }
+  },
+  "actions": {
+    "create": "Crear",
+    "save": "Ahorrar",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "register": "Registro",
+    "expand": "Expandir todo",
+    "compact": "Comprimir todo"
+  }
+}
