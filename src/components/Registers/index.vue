@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch  } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import ModalRegister from '@/components/ModalRegister/index.vue'
 import ModalDelete from '@/components/ModalDelete/index.vue'
@@ -13,6 +13,10 @@ function changeView() {
   panel.value = !panelChangeView.value ? wallet.getIds : []
   panelChangeView.value = !panelChangeView.value;
 }
+
+watch(panel, (newPanel) => {
+  if (!newPanel.length) panelChangeView.value = false
+})
 
 const typeColors: any = {
   investiment: 'text-blue',
