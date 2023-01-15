@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import ModalRegister from '@/components/ModalRegister/index.vue'
 import ModalDelete from '@/components/ModalDelete/index.vue'
@@ -13,10 +13,6 @@ function changeView() {
   panel.value = !panelChangeView.value ? wallet.getIds : []
   panelChangeView.value = !panelChangeView.value;
 }
-
-watch(panel, (newPanel) => {
-  if (newPanel == undefined) panelChangeView.value = false
-})
 
 const typeColors: any = {
   investiment: 'text-blue',
@@ -40,7 +36,7 @@ const typeColors: any = {
         </template>
       </v-btn>
     </div>
-    <v-expansion-panels v-model="panel">
+    <v-expansion-panels v-model="panel" :multiple="panelChangeView">
       <v-expansion-panel v-for="item of wallet.getRegisters" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
           <span class="mr-4 font-weight-bold" :class="[typeColors[item.type.value]]">&#9670;</span>
