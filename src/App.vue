@@ -6,6 +6,7 @@ import Language from '@/components/Language/index.vue'
 
 const wallet = useWalletStore()
 const theme = ref('light')
+const drawer = ref(false)
 
 function setTheme (value: string) {
   localStorage.setItem('theme', value)
@@ -31,20 +32,35 @@ onMounted(() => {
       <v-container class="d-flex justify-space-between">
         <h1><v-icon class="mr-2" icon="mdi-wallet" />Wallet Digitalz</h1>
         <v-spacer></v-spacer>
+        <v-btn @click.stop="drawer = !drawer" size="x-small" icon="mdi-menu" />
+      </v-container>
+    </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      location="right"
+      temporary
+    >
+      <v-list-item>
         <Language />
+      </v-list-item>
+      <v-divider />
+      <v-list-item>
         <v-btn
+          block
           :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
           @click="toggleTheme"
         >{{ theme }}</v-btn>
-      </v-container>
-    </v-app-bar>
+      </v-list-item>
+      <v-divider />
+    </v-navigation-drawer>
 
     <v-main>
       <v-container>
         <template v-if="!wallet.registers.length">
           <h2>{{ $t('home.lets') }}</h2>
           <p>{{ $t('home.about') }}</p>
-          <v-divider class="divider my-2"></v-divider>
+          <v-divider class="divider my-2" />
         </template>
         <Registers />
       </v-container>

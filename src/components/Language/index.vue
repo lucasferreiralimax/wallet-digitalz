@@ -11,22 +11,13 @@ watch(locale, (val) => {
 </script>
 
 <template>
-  <div class="app-language mr-2">
-    <v-select
-      append-inner-icon=""
-      v-model="locale"
-      single-line
-      :items="[...supportLocales]"
-      density="compact"
-      variant="underlined"
-    />
-  </div>
+  <v-select
+    class="ma-0"
+    v-model="locale"
+    single-line
+    :items="[...supportLocales]"
+    density="compact"
+    variant="solo"
+    hide-details="auto"
+  />
 </template>
-
-<style>
-.app-language {
-  width: 50px;
-  height: 35px;
-  transform: translateY(-10px);
-}
-</style>
