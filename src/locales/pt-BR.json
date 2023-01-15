@@ -17,7 +17,24 @@
       "indicates": "* indica campo obrigatório",
       "investiment": "Investimento",
       "expense": "Despesa",
-      "entry": "Entrada"
+      "entry": "Entrada",
+      "rules": {
+        "type": {
+          "required": "Tipo é obrigatório"
+        },
+        "name": {
+          "required": "Nome é obrigatório",
+          "less": "Nome precisar ser menor que 15 letras"
+        },
+        "value": {
+          "required": "Valor é obrigatório"
+        },
+        "description": {
+          "required": "Descrição é obrigatório",
+          "less": "Descrição precisar ser menor que 250 letras",
+          "more": "Descrição precisar ser maior que 20 letras"
+        }
+      }
     }
   },
   "actions": {

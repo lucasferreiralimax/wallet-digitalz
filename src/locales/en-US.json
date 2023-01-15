@@ -17,7 +17,24 @@
       "indicates": "* indicates required field",
       "investiment": "Investiment",
       "expense": "Expense",
-      "entry": "Entry"
+      "entry": "Entry",
+      "rules": {
+        "type": {
+          "required": "Type is required"
+        },
+        "name": {
+          "required": "Name is required",
+          "less": "Name must be less than 15 characters"
+        },
+        "value": {
+          "required": "Value is required"
+        },
+        "description": {
+          "required": "Description is required",
+          "less": "Description must be less than 250 characters",
+          "more": "Description must be more than 20 characters"
+        }
+      }
     }
   },
   "actions": {

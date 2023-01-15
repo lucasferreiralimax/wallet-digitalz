@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { v4 as uuidv4 } from 'uuid';
 import { useWalletStore } from '@/stores/wallet'
 import { TypeRegister, Register } from '@/types'
 
+const { t } = useI18n()
 const props = defineProps<{ update?: boolean, register?: Register }>()
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
@@ -15,22 +17,22 @@ const value = ref<number | undefined>(props.register ? props.register.value : un
 const description = ref<string | undefined>(props.register ? props.register.description : undefined)
 
 const typeRules = [
-  (v: string) => !!v || 'Type is required'
+  (v: string) => !!v || t('register.form.rules.type.required')
 ]
 
 const nameRules = [
-  (v: string) => !!v || 'Name is required',
-  (v: string) => v.length <= 15 || 'Name must be less than 15 characters',
+  (v: string) => !!v || t('register.form.rules.name.required'),
+  (v: string) => v.length <= 15 || t('register.form.rules.name.less'),
 ]
 
 const valueRules = [
-  (v: string) => !!v || 'Value is required'
+  (v: string) => !!v || t('register.form.rules.value.required')
 ]
 
 const descriptionRules = [
-(v: string) => !!v || 'Description is required',
-  (v: string) => v.length > 20 || 'Description must be more than 20 characters',
-  (v: string) => v.length <= 250 || 'Description must be less than 250 characters',
+(v: string) => !!v || t('register.form.rules.description.required'),
+  (v: string) => v.length > 20 || t('register.form.rules.description.more'),
+  (v: string) => v.length <= 250 || t('register.form.rules.description.less'),
 ]
 
 function close () {
