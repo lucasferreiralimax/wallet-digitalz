@@ -4,7 +4,7 @@ export type TypeRegister = {
 }
 
 export type Register = {
-  id: string;
+  id: string | undefined;
   type: TypeRegister | undefined;
   name: string | undefined;
   value: number | undefined;

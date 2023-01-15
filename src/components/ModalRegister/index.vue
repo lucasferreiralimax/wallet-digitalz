@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useWalletStore } from '@/stores/wallet'
 import { TypeRegister, Register } from '@/types'
 
-const props = defineProps<{ update?: boolean, register: Register }>()
+const props = defineProps<{ update?: boolean, register?: Register }>()
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
@@ -51,7 +51,7 @@ async function validate () {
 
     if (props.update) {
       wallet.editRegister({
-        id: props.register.id,
+        id: props.register?.id,
         ...formData
       })
     } else {
