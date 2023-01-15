@@ -46,7 +46,7 @@ const typeColors: any = {
           </span>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
-          <pre class="pt-2 font-weight-regular">{{ item.description }}</pre>
+          <pre class="pt-2 font-weight-regular text-body-1 overflow-x-auto">{{ item.description }}</pre>
           <v-col class="d-flex justify-end pa-0 mt-2" width="100%">
             <ModalDelete :register="item" />
             <ModalRegister update :register="item" />
@@ -54,12 +54,12 @@ const typeColors: any = {
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
-    <div v-if="wallet.getTotal" class="d-flex pa-4">
-      <h2 class="mr-2">
-        {{ $t('home.total') }} <b class="text-green">${{ Number(wallet.getTotal).toFixed(2) }}</b>
-      </h2>
-      <p class="mt-2" v-if="wallet.getExpensesTotal">
-        {{ $t('home.totalExpense') }}: <b class="text-red">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b>
+    <div v-if="wallet.getTotal" class="d-flex pa-4 justify-end flex-column">
+      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
+        <b class="text-red mr-2">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b> <span class="text-caption text-uppercase">{{ $t('home.expense') }}</span>
+      </p>
+      <p class="d-flex align-center justify-end text-uppercase">
+        <b class="text-green text-h4 mr-2">${{ Number(wallet.getTotal).toFixed(2) }}</b> {{ $t('home.money') }}
       </p>
     </div>
   </div>

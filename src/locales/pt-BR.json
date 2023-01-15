@@ -6,8 +6,8 @@
   "home": {
     "lets": "Comece agora os seus registros",
     "about": "Este aplicativo é para ajudar a gerenciar seu dinheiro, despesas e investimentos",
-    "total": "Total",
-    "totalExpense": "Total de despesas"
+    "money": "Dinheiro",
+    "expense": "Despesas"
   },
   "register": {
     "create": "Criar registro",
