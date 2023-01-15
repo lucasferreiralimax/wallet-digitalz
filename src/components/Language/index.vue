@@ -11,20 +11,22 @@ watch(locale, (val) => {
 </script>
 
 <template>
-  <select class="app-language" v-model="locale">
-    <option
-      v-for="optionLocale in supportLocales"
-      :key="`locale-${optionLocale}`"
-      :value="optionLocale">{{ optionLocale }}
-    </option>
-  </select>
+  <div class="app-language mr-2">
+    <v-select
+      :append-inner-icon="false"
+      v-model="locale"
+      single-line
+      :items="[...supportLocales]"
+      density="compact"
+      variant="underlined"
+    />
+  </div>
 </template>
 
 <style>
 .app-language {
-  padding: 0.2rem;
-  border-radius: 6px;
-  background: inherit;
-  color: inherit;
+  width: 50px;
+  height: 35px;
+  transform: translateY(-10px);
 }
 </style>
