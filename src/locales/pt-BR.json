@@ -2,8 +2,7 @@
   "home": {
     "lets": "Comece agora os seus registros",
     "about": "Este aplicativo é para ajudar a gerenciar seu dinheiro, despesas e investimentos",
-    "money": "Dinheiro",
-    "expense": "Despesas"
+    "money": "Dinheiro"
   },
   "register": {
     "create": "Criar registro",

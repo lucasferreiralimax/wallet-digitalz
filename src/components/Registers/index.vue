@@ -19,9 +19,9 @@ watch(panel, (newPanel) => {
 })
 
 const typeColors: any = {
-  'investiment': 'text-green',
-  'expense': 'text-red',
-  'entry': 'text-blue'
+  investiment: 'text-blue',
+  expense: 'text-red',
+  entry: 'text-green'
 }
 </script>
 
@@ -60,10 +60,20 @@ const typeColors: any = {
     </v-expansion-panels>
     <div v-if="wallet.getTotal" class="d-flex pa-4 justify-end flex-column">
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
-        <b class="text-red mr-2">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b> <span class="text-caption text-uppercase">{{ $t('home.expense') }}</span>
+        <b class="text-red mr-2">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b>
+        <span class="text-caption text-uppercase">{{ $t('register.form.expense') }}</span>
+      </p>
+      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getEntryTotal">
+        <b class="text-green mr-2">${{ Number(wallet.getEntryTotal).toFixed(2) }}</b>
+        <span class="text-caption text-uppercase">{{ $t('register.form.entry') }}</span>
+      </p>
+      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getInvestimentTotal">
+        <b class="text-blue mr-2">${{ Number(wallet.getInvestimentTotal).toFixed(2) }}</b>
+        <span class="text-caption text-uppercase">{{ $t('register.form.investiment') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase">
-        <b class="text-green text-h4 mr-2">${{ Number(wallet.getTotal).toFixed(2) }}</b> {{ $t('home.money') }}
+        <b class="text-green text-h4 mr-2">${{ Number(wallet.getTotal).toFixed(2) }}</b>
+        {{ $t('home.money') }}
       </p>
     </div>
   </div>
