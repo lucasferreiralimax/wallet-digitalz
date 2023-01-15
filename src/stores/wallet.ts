@@ -23,6 +23,11 @@ export const useWalletStore = defineStore('wallet', {
     getEntryTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
     getExpensesTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "expense").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
     getInvestimentTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "investiment").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
+    getTotalLessExpense: ({ registers })  => {
+      const money = registers.filter(({ type: { value }} : typeValue) => value == "investiment" || value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0)
+      const expenses = registers.filter(({ type: { value }} : typeValue) => value == "expense").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0)
+      return Number(money - expenses);
+    },
     getTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "investiment" || value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
   },
   actions: {
