@@ -8,7 +8,7 @@ const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
 const valid = ref<boolean>(false)
 const myForm = ref()
-const týpeRegister = ref<string>(props.register ? props.register.týpe : undefined)
+const typeRegister = ref<string>(props.register ? props.register.type : undefined)
 const name = ref<string>(props.register ? props.register.name : undefined)
 const value = ref<number>(props.register ? props.register.value : undefined)
 const description = ref<string>(props.register ? props.register.description : undefined)
@@ -27,35 +27,38 @@ const valueRules = [
 ]
 
 const descriptionRules = [
+(v: string) => !!v || 'Description is required',
   (v: string) => v.length > 20 || 'Description must be more than 20 characters',
   (v: string) => v.length <= 250 || 'Description must be less than 250 characters',
 ]
 
+function close () {
+  if (!props.update) myForm.value.reset()
+  dialog.value = false
+}
+
 async function validate () {
-  const { valid } = await myForm.value.validate()
 
-  if (valid) {
-    const formData = {
-      name: name.value,
-      type: týpeRegister.value,
-      value: value.value,
-      description: description.value
-    }
-
-    if (props.update) {
-      wallet.editRegister({
-        id: props.register.id,
-        ...formData
-      })
-    } else {
-      wallet.newRegister({
-        id: uuidv4(),
-        ...formData
-      })
-    }
-
-    dialog.value = false
+  const formData = {
+    name: name.value,
+    type: typeRegister.value,
+    value: value.value,
+    description: description.value
   }
+
+  if (props.update) {
+    wallet.editRegister({
+      id: props.register.id,
+      ...formData
+    })
+  } else {
+    wallet.newRegister({
+      id: uuidv4(),
+      ...formData
+    })
+  }
+
+  close()
 }
 </script>
 
@@ -96,7 +99,7 @@ async function validate () {
               >
                 <v-select
                   label="Type of register"
-                  v-model="týpeRegister"
+                  v-model="typeRegister"
                   :rules="typeRules"
                   :items="['Investiment', 'Expenses', 'Entry']"
                 />
@@ -146,7 +149,7 @@ async function validate () {
         <v-btn
           color="error"
           variant="text"
-          @click="dialog = false"
+          @click="close"
         >
           <v-icon class="mr-2" icon="mdi-cancel" />
           Cancel
@@ -155,6 +158,7 @@ async function validate () {
           color="success"
           variant="flat"
           @click="validate"
+          :disabled="!valid"
         >
           <v-icon class="mr-2" icon="mdi-check" />
           {{ update ? 'Save' : 'Create' }}

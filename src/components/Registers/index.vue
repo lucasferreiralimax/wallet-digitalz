@@ -19,8 +19,6 @@ const typeColors: any = {
   'Expenses': 'text-red',
   'Entry': 'text-blue'
 }
-
-console.log(wallet.getExpensesTotal);
 </script>
 
 <template>
