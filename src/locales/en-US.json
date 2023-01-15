@@ -1,8 +1,4 @@
 {
-  "languages": {
-    "pt": "Portuguese",
-    "en": "English"
-  },
   "home": {
     "lets": "Let's go make your registers",
     "about": "This application is for help to manager your money, expenses and investiments",
@@ -12,6 +8,7 @@
   "register": {
     "create": "Create register",
     "update": "Update register",
+    "delete": "Delete register",
     "form": {
       "type": "Type of register *",
       "name": "Name of register *",
@@ -26,6 +23,7 @@
   "actions": {
     "create": "Create",
     "save": "Save",
+    "confirm": "Confirm",
     "cancel": "Cancel",
     "register": "Register",
     "expand": "Expand All",

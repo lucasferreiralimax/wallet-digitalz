@@ -23,7 +23,7 @@ const wallet = useWalletStore()
     </template>
     <v-card class="mx-auto pa-4">
       <v-card-title>
-        <span class="text-h5">Delete register</span>
+        <span class="text-h5">{{ $t('register.delete') }}</span>
       </v-card-title>
       <v-card-text>
         Do you want delete this {{ register.name }} register?
@@ -36,7 +36,7 @@ const wallet = useWalletStore()
           @click="dialog = false"
         >
           <v-icon class="mr-2" icon="mdi-cancel" />
-          Cancel
+          {{ $t('actions.cancel') }}
         </v-btn>
         <v-btn
           color="success"
@@ -44,7 +44,7 @@ const wallet = useWalletStore()
           @click="wallet.deleteRegister(register.id as string)"
         >
           <v-icon class="mr-2" icon="mdi-check" />
-          Confirm
+          {{ $t('actions.confirm') }}
         </v-btn>
       </v-card-actions>
     </v-card>
