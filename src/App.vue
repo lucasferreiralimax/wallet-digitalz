@@ -29,7 +29,7 @@ onMounted(() => {
 <template>
   <v-app :theme="theme">
     <v-app-bar>
-      <v-container class="d-flex justify-space-between">
+      <v-container class="max-width d-flex justify-space-between">
         <h1><v-icon class="mr-2" icon="mdi-wallet" />Wallet Digitalz</h1>
         <v-spacer></v-spacer>
         <v-btn @click.stop="drawer = !drawer" size="x-small" :icon="drawer ? 'mdi-close' : 'mdi-menu'" />
@@ -39,6 +39,8 @@ onMounted(() => {
     <v-navigation-drawer
       v-model="drawer"
       location="right"
+      rail
+      rail-width="150"
       temporary
     >
       <v-list-item>
@@ -56,7 +58,7 @@ onMounted(() => {
     </v-navigation-drawer>
 
     <v-main class="main">
-      <v-container>
+      <v-container class="max-width">
         <template v-if="!wallet.registers.length">
           <h2>{{ $t('home.lets') }}</h2>
           <p>{{ $t('home.about') }}</p>
@@ -69,6 +71,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.max-width {
+  max-width: 700px;
+}
 .main {
   background: rgba(var(--v-theme-main));
 }
