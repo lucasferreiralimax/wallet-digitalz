@@ -15,7 +15,7 @@ function changeView() {
 }
 
 watch(panel, (newPanel) => {
-  if (!newPanel.length) panelChangeView.value = false
+  if (panelChangeView.value && !newPanel.length) panelChangeView.value = false
 })
 
 const typeColors: any = {
