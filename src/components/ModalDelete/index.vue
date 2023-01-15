@@ -41,7 +41,7 @@ const wallet = useWalletStore()
         <v-btn
           color="success"
           variant="flat"
-          @click="wallet.deleteRegister(register.id)"
+          @click="wallet.deleteRegister(register.id as string)"
         >
           <v-icon class="mr-2" icon="mdi-check" />
           Confirm
