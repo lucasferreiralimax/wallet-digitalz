@@ -41,7 +41,7 @@ const typeColors: any = {
       </v-btn>
     </div>
     <v-expansion-panels v-model="panel">
-      <v-expansion-panel v-for="item of wallet.registers" :key="item.id" :value="item.id">
+      <v-expansion-panel v-for="item of wallet.getRegisters" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
           <span class="mr-4 font-weight-bold" :class="[typeColors[item.type.value]]">&#9670;</span>
           {{ $t(`register.form.${item.type.value}`) }} &#x2022; {{ item.name }}
