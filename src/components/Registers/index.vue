@@ -39,8 +39,9 @@ const typeColors: any = {
     <v-expansion-panels v-model="panel">
       <v-expansion-panel v-for="item of wallet.registers" :key="item.id" :value="item.id">
         <v-expansion-panel-title>
-          {{ item.name }} {{ $t(`register.form.${item.type.value}`) }}
-          <span class="pl-2" :class="[typeColors[item.type.value]]">
+          <span class="mr-4 font-weight-bold" :class="[typeColors[item.type.value]]">&#9670;</span>
+          {{ $t(`register.form.${item.type.value}`) }} &#x2022; {{ item.name }}
+          <span class="text-value pl-2 font-weight-bold" :class="[typeColors[item.type.value]]">
             ${{ Number(item.value).toFixed(2) }}
           </span>
         </v-expansion-panel-title>
@@ -63,3 +64,10 @@ const typeColors: any = {
     </div>
   </div>
 </template>
+
+<style scoped>
+.text-value {
+  position: absolute;
+  right: 60px;
+}
+</style>
