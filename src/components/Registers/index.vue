@@ -71,7 +71,7 @@ const typeColors: any = {
         <b class="text-blue mr-2">${{ Number(wallet.getInvestimentTotal).toFixed(2) }}</b>
         <span class="text-caption text-uppercase">{{ $t('register.form.investiment') }}</span>
       </p>
-      <p class="d-flex align-center justify-end text-uppercase">
+      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
         <b class="text-amber-darken-2 text-h5 mr-2">${{ Number(wallet.getTotalLessExpense).toFixed(2) }}</b>
         {{ $t('home.liquid') }}
       </p>
