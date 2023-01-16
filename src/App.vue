@@ -50,7 +50,7 @@ onMounted(() => {
       <v-list-item>
         <v-btn
           block
-          :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+          :prepend-icon="theme === 'light' ? 'mdi-lightbulb-on' : 'mdi-lightbulb-off'"
           @click="toggleTheme"
         >{{ theme }}</v-btn>
       </v-list-item>
