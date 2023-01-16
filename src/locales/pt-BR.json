@@ -25,15 +25,15 @@
         },
         "name": {
           "required": "Nome é obrigatório",
-          "less": "Nome precisar ser menor que 15 letras"
+          "less": "Nome precisa ser menor que 15 letras"
         },
         "value": {
           "required": "Valor é obrigatório"
         },
         "description": {
           "required": "Descrição é obrigatório",
-          "less": "Descrição precisar ser menor que 250 letras",
-          "more": "Descrição precisar ser maior que 20 letras"
+          "less": "Descrição precisa ser menor que 250 letras",
+          "more": "Descrição precisa ser maior que 20 letras"
         }
       }
     }
