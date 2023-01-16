@@ -6,6 +6,21 @@ interface typeValue {
   type: TypeRegister;
 }
 
+interface typeValue {
+  value: number;
+}
+
+function getTotal (registers: any) {
+  return registers.reduce((a: number, { value }: Register) => Number(value) + Number(a), 0)
+}
+
+function shortRegisters (registers: any, type: string) {
+  const entrys = registers.filter(({ type: { value }} : typeValue) => value == type)
+  return [
+    ...entrys.sort((a: typeValue, b: typeValue) => b.value - a.value)
+  ]
+}
+
 export const useWalletStore = defineStore('wallet', {
   state: (): any => { // @TODO adjustment type
     return {
@@ -14,21 +29,19 @@ export const useWalletStore = defineStore('wallet', {
   },
   getters: {
     getIds: ({ registers }) => registers.map(({ id }: Register) => id),
-    getRegisters: ({ registers })  => {
-      const entrys = registers.filter(({ type: { value }} : typeValue) => value == "entry")
-      const expenses = registers.filter(({ type: { value }} : typeValue) => value == "expense")
-      const investiments = registers.filter(({ type: { value }} : typeValue) => value == "investiment")
-      return [...entrys, ...investiments, ...expenses]
+    getEntrys: ({ registers })  => shortRegisters(registers, 'entry'),
+    getExpenses: ({ registers })  => shortRegisters(registers, 'expense'),
+    getInvestiments: ({ registers })  => shortRegisters(registers, 'investiment'),
+    getRegisters: ({ getEntrys, getExpenses, getInvestiments })  => {
+      return [ ...getEntrys, ...getInvestiments, ...getExpenses]
     },
-    getEntryTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
-    getExpensesTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "expense").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
-    getInvestimentTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "investiment").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
-    getTotalLessExpense: ({ registers })  => {
-      const money = registers.filter(({ type: { value }} : typeValue) => value == "investiment" || value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0)
-      const expenses = registers.filter(({ type: { value }} : typeValue) => value == "expense").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0)
-      return Number(money - expenses);
+    getEntryTotal: ({ getEntrys })  => getTotal(getEntrys),
+    getExpensesTotal: ({ getExpenses })  => getTotal(getExpenses),
+    getInvestimentTotal: ({ getInvestiments })  => getTotal(getInvestiments),
+    getTotalLessExpense: ({ getEntryTotal, getExpensesTotal, getInvestimentTotal })  => {
+      return Number((getEntryTotal + getInvestimentTotal) - getExpensesTotal);
     },
-    getTotal: ({ registers })  => registers.filter(({ type: { value }} : typeValue) => value == "investiment" || value == "entry").reduce((a: number, { value }: Register) => Number(value) + Number(a), 0),
+    getTotal: ({ getEntryTotal, getInvestimentTotal })  => Number(getEntryTotal + getInvestimentTotal),
   },
   actions: {
     newRegister(register: Register) {
