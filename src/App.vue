@@ -74,6 +74,14 @@ onMounted(() => {
         <Registers />
       </v-container>
     </v-main>
+
+    <v-footer>
+      <v-col class="text-center">
+        <a class="footer-text text-decoration-none" href="https://lucas-frontend.web.app" target="_blank">
+          <Logo  class="logo-footer mr-2"/> <strong>Wallet Digitalz</strong> — {{ new Date().getFullYear() }}
+        </a>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
@@ -83,5 +91,11 @@ onMounted(() => {
 }
 .main {
   background: rgba(var(--v-theme-main));
+}
+.logo-footer {
+  transform: translateY(5px);
+}
+.footer-text {
+  color: rgba(var(--v-theme-on-surface));
 }
 </style>
