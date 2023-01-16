@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import Registers from '@/components/Registers/index.vue'
 import Language from '@/components/Language/index.vue'
+import Logo from '@/components/Logo.vue'
 
 const wallet = useWalletStore()
 const theme = ref('light')
@@ -30,7 +31,7 @@ onMounted(() => {
   <v-app :theme="theme">
     <v-app-bar>
       <v-container class="max-width d-flex justify-space-between">
-        <h1><v-icon class="mr-2" icon="mdi-wallet" />Wallet Digitalz</h1>
+        <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
         <v-spacer></v-spacer>
         <v-btn @click.stop="drawer = !drawer" size="x-small" :icon="drawer ? 'mdi-close' : 'mdi-menu'" />
       </v-container>
