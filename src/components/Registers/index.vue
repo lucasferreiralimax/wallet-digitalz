@@ -4,6 +4,10 @@ import { useWalletStore } from '@/stores/wallet'
 import ModalRegister from '@/components/ModalRegister/index.vue'
 import ModalDelete from '@/components/ModalDelete/index.vue'
 import { RegisterIds } from '@/types'
+import { parseMoney } from '@/utils'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n();
 
 const wallet = useWalletStore()
 const panel = ref<RegisterIds[]>([])
@@ -46,7 +50,7 @@ const typeColors: any = {
           <span class="mr-4 font-weight-bold" :class="[typeColors[item.type.value]]">&#9670;</span>
           {{ $t(`register.form.${item.type.value}`) }} &#x2022; {{ item.name }}
           <span class="text-value pl-2 font-weight-bold" :class="[typeColors[item.type.value]]">
-            ${{ Number(item.value).toFixed(2) }}
+            {{ parseMoney(item.value, locale) }}
           </span>
         </v-expansion-panel-title>
         <v-expansion-panel-text>
@@ -60,23 +64,23 @@ const typeColors: any = {
     </v-expansion-panels>
     <div v-if="wallet.getTotal" class="d-flex pa-4 justify-end flex-column">
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
-        <b class="text-red mr-2">${{ Number(wallet.getExpensesTotal).toFixed(2) }}</b>
+        <b class="text-red mr-2">{{ parseMoney(wallet.getExpensesTotal, locale) }}</b>
         <span class="text-caption text-uppercase">{{ $t('register.form.expense') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getEntryTotal">
-        <b class="text-green mr-2">${{ Number(wallet.getEntryTotal).toFixed(2) }}</b>
+        <b class="text-green mr-2">{{ parseMoney(wallet.getEntryTotal, locale) }}</b>
         <span class="text-caption text-uppercase">{{ $t('register.form.entry') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getInvestimentTotal">
-        <b class="text-blue mr-2">${{ Number(wallet.getInvestimentTotal).toFixed(2) }}</b>
+        <b class="text-blue mr-2">{{ parseMoney(wallet.getInvestimentTotal, locale) }}</b>
         <span class="text-caption text-uppercase">{{ $t('register.form.investiment') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
-        <b class="text-amber-darken-2 text-h5 mr-2">${{ Number(wallet.getTotalLessExpense).toFixed(2) }}</b>
+        <b class="text-amber-darken-2 text-h5 mr-2">{{ parseMoney(wallet.getTotalLessExpense, locale) }}</b>
         {{ $t('home.liquid') }}
       </p>
       <p class="d-flex align-center justify-end text-uppercase">
-        <b class="text-light-green text-h4 mr-2">${{ Number(wallet.getTotal).toFixed(2) }}</b>
+        <b class="text-light-green text-h4 mr-2">{{ parseMoney(wallet.getTotal, locale) }}</b>
         {{ $t('home.money') }}
       </p>
     </div>
