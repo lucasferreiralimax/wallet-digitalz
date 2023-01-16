@@ -12,6 +12,7 @@ watch(locale, (val) => {
 
 <template>
   <v-select
+    label="Language"
     class="ma-0"
     v-model="locale"
     single-line

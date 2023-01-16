@@ -33,7 +33,13 @@ onMounted(() => {
       <v-container class="max-width d-flex justify-space-between">
         <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
         <v-spacer></v-spacer>
-        <v-btn @click.stop="drawer = !drawer" size="x-small" :icon="drawer ? 'mdi-close' : 'mdi-menu'" />
+        <v-btn
+          role="button"
+          aria-label="Button menu drawer"
+          @click.stop="drawer = !drawer"
+          size="x-small"
+          :icon="drawer ? 'mdi-close' : 'mdi-menu'"
+        />
       </v-container>
     </v-app-bar>
 
