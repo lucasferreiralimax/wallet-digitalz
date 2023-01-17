@@ -28,7 +28,8 @@
           "less": "Name must be less than 15 characters"
         },
         "value": {
-          "required": "Value is required"
+          "required": "Value is required",
+          "less": "Value must be less than {value}"
         },
         "description": {
           "required": "Description is required",

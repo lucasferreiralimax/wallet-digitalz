@@ -1,4 +1,4 @@
-export const parseMoney = (money: string, country: string) => {
+export const parseMoney = (money: string | number, country: string) => {
   const number = Number(Number(money).toFixed(2))
   const currencys: any = {
     'pt-BR': 'BRL',

@@ -3,9 +3,10 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { v4 as uuidv4 } from 'uuid';
 import { useWalletStore } from '@/stores/wallet'
+import { parseMoney } from '@/utils'
 import { TypeRegister, Register } from '@/types'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const props = defineProps<{ update?: boolean, register?: Register }>()
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
@@ -15,6 +16,9 @@ const typeRegister = ref<TypeRegister | undefined>(props.register ? props.regist
 const name = ref<string | undefined>(props.register ? props.register.name : undefined)
 const value = ref<number | undefined>(props.register ? props.register.value : undefined)
 const description = ref<string | undefined>(props.register ? props.register.description : undefined)
+
+const sizeLimitMoney = 9999999.99;
+const limitMoney = parseMoney(sizeLimitMoney, locale.value)
 
 const typeRules = [
   (v: string) => !!v || t('register.form.rules.type.required')
@@ -26,7 +30,8 @@ const nameRules = [
 ]
 
 const valueRules = [
-  (v: string) => !!v || t('register.form.rules.value.required')
+  (v: string) => !!v || t('register.form.rules.value.required'),
+  (v: number) => v <=  sizeLimitMoney || t('register.form.rules.value.less', { value: limitMoney })
 ]
 
 const descriptionRules = [

@@ -28,7 +28,8 @@
           "less": "名称必须少于 15 个字母"
         },
         "value": {
-          "required": "值是必需的"
+          "required": "值是必需的",
+          "less": "值必须小于 {value}"
         },
         "description": {
           "required": "描述是必需的",

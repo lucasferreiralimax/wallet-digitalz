@@ -8,7 +8,6 @@ import { parseMoney } from '@/utils'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n();
-
 const wallet = useWalletStore()
 const panel = ref<RegisterIds[]>([])
 const panelChangeView = ref<boolean>(false)

@@ -28,7 +28,8 @@
           "less": "Nombre debe tener menos de 15 letras"
         },
         "value": {
-          "required": "Valor es obligatorio"
+          "required": "Valor es obligatorio",
+          "less": "Valor debe tener menos de {value}"
         },
         "description": {
           "required": "Descripción es obligatorio",
