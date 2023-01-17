@@ -4,7 +4,9 @@ import { useWalletStore } from '@/stores/wallet'
 import Registers from '@/components/Registers/index.vue'
 import Language from '@/components/Language/index.vue'
 import Logo from '@/components/Logo.vue'
+import pkg from '../package.json';
 
+const appVersion: string = pkg.version;
 const wallet = useWalletStore()
 const theme = ref('light')
 const drawer = ref(false)
@@ -76,11 +78,15 @@ onMounted(() => {
     </v-main>
 
     <v-footer>
-      <v-col class="text-center">
-        <a class="footer-text text-decoration-none" href="https://lucas-frontend.web.app" target="_blank">
-          <Logo  class="logo-footer mr-2"/> <strong>Wallet Digitalz</strong> — {{ new Date().getFullYear() }}
-        </a>
-      </v-col>
+      <v-row>
+        <v-col class="text-center">
+          <a class="footer-text text-decoration-none" href="https://lucas-frontend.web.app" target="_blank">
+            <Logo  class="logo-footer mr-2"/> <strong>Wallet Digitalz</strong> — {{ new Date().getFullYear() }}
+          </a>
+          <br>
+          <p>{{ $t('version') }} {{ appVersion }}</p>
+        </v-col>
+      </v-row>
     </v-footer>
   </v-app>
 </template>
