@@ -23,9 +23,9 @@ watch(panel, (newPanel) => {
 })
 
 const typeColors: any = {
-  investiment: 'text-blue',
-  expense: 'text-red',
-  entry: 'text-green'
+  investiment: 'info',
+  expense: 'error',
+  entry: 'success'
 }
 </script>
 
@@ -45,11 +45,31 @@ const typeColors: any = {
       </v-btn>
     </div>
     <v-expansion-panels v-model="panel" :multiple="panelChangeView">
-      <v-expansion-panel v-for="item of wallet.getRegisters" :key="item.id" :value="item.id">
-        <v-expansion-panel-title>
-          <span class="mr-4 font-weight-bold" :class="[typeColors[item.type.value]]">&#9670;</span>
-          {{ $t(`register.form.${item.type.value}`) }} &#x2022; {{ item.name }}
-          <span class="text-value pl-2 font-weight-bold" :class="[typeColors[item.type.value]]">
+      <v-expansion-panel
+        v-for="item of wallet.getRegisters"
+        :key="item.id"
+        :value="item.id"
+        class="register"
+        :class="[`${typeColors[item.type.value]}`]"
+      >
+        <v-expansion-panel-title class="pl-4 pr-2">
+          <span
+            class="d-none d-sm-flex mr-2 font-weight-bold"
+            :class="[`text-${typeColors[item.type.value]}`]"
+          >
+            &#9670;
+          </span>
+          <span
+            class="mr-2 font-weight-bold"
+            :class="[`text-${typeColors[item.type.value]}`]"
+          >
+            {{ $t(`register.form.${item.type.value}`) }}
+          </span>
+          <span class="text-capitalize">{{ item.name }}</span>
+          <span
+            class="text-value pl-2 font-weight-bold"
+            :class="[`text-${typeColors[item.type.value]}`]"
+          >
             {{ parseMoney(item.value, locale) }}
           </span>
         </v-expansion-panel-title>
@@ -64,15 +84,15 @@ const typeColors: any = {
     </v-expansion-panels>
     <div v-if="wallet.getTotal" class="d-flex pa-4 justify-end flex-column">
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
-        <b class="text-red mr-2">{{ parseMoney(wallet.getExpensesTotal, locale) }}</b>
+        <b class="text-error mr-2">{{ parseMoney(wallet.getExpensesTotal, locale) }}</b>
         <span class="text-caption text-uppercase">{{ $t('register.form.expense') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getEntryTotal">
-        <b class="text-green mr-2">{{ parseMoney(wallet.getEntryTotal, locale) }}</b>
+        <b class="text-success mr-2">{{ parseMoney(wallet.getEntryTotal, locale) }}</b>
         <span class="text-caption text-uppercase">{{ $t('register.form.entry') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getInvestimentTotal">
-        <b class="text-blue mr-2">{{ parseMoney(wallet.getInvestimentTotal, locale) }}</b>
+        <b class="text-info mr-2">{{ parseMoney(wallet.getInvestimentTotal, locale) }}</b>
         <span class="text-caption text-uppercase">{{ $t('register.form.investiment') }}</span>
       </p>
       <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
@@ -90,6 +110,16 @@ const typeColors: any = {
 <style scoped>
 .text-value {
   position: absolute;
-  right: 60px;
+  right: 35px;
+  transform: translateY(1px);
+}
+.register.info {
+  box-shadow: inset 2px 0 0 rgba(var(--v-theme-info));
+}
+.register.error {
+  box-shadow: inset 2px 0 0 rgba(var(--v-theme-error));
+}
+.register.success {
+  box-shadow: inset 2px 0 0 rgba(var(--v-theme-success));
 }
 </style>
