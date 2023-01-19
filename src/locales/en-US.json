@@ -10,7 +10,7 @@
     "create": "Create register",
     "update": "Update register",
     "delete": "Delete register",
-    "deleteMsg": "Do you want delete this {name} register?",
+    "deleteMsg": "Do you want delete this {name} register with value {value}?",
     "form": {
       "type": "Type of register *",
       "name": "Name of register *",

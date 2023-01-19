@@ -10,7 +10,7 @@
     "create": "创造记录",
     "update": "更新记录",
     "delete": "删除记录",
-    "deleteMsg": "是否要删除记录 {name}?",
+    "deleteMsg": "是否要删除记录 {name} 价值为 {value}?",
     "form": {
       "type": "记录类型 *",
       "name": "记录名称 *",

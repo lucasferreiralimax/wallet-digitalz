@@ -10,7 +10,7 @@
     "create": "Crear registro",
     "update": "Actualizar registro",
     "delete": "Eliminar registro",
-    "deleteMsg": "¿Quieres eliminar el registro {name}?",
+    "deleteMsg": "¿Quieres eliminar el registro {name} con valor {value}?",
     "form": {
       "type": "Tipo do registro *",
       "name": "Nombre do registro *",

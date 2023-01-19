@@ -2,7 +2,10 @@
 import { ref } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
 import { Register } from '@/types'
+import { parseMoney } from '@/utils'
+import { useI18n } from 'vue-i18n'
 
+const { locale } = useI18n();
 const props = defineProps<{ register: Register }>()
 const dialog = ref<boolean>(false)
 const wallet = useWalletStore()
@@ -26,7 +29,7 @@ const wallet = useWalletStore()
         <span class="text-h5">{{ $t('register.delete') }}</span>
       </v-card-title>
       <v-card-text>
-        {{ $t('register.deleteMsg', { name: register.name }) }}
+        {{ $t('register.deleteMsg', { name: register.name, value: parseMoney(Number(register.value), locale) }) }}
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
