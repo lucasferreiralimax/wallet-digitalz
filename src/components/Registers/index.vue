@@ -32,16 +32,14 @@ const typeColors: any = {
   <div>
     <div class="text-center d-flex pb-4">
       <ModalRegister />
-      <v-btn v-if="wallet.registers.length" class="ma-2" @click="changeView">
-        <template v-if="!panelChangeView">
-          <v-icon class="mr-2" icon="mdi-arrow-expand-vertical" />
-          {{ $t('actions.expand') }}
-        </template>
-        <template v-else>
-          <v-icon class="mr-2" icon="mdi-arrow-collapse-vertical" />
-          {{ $t('actions.compact') }}
-        </template>
-      </v-btn>
+      <v-btn
+        v-if="wallet.registers.length"
+        class="ma-2"
+        @click="changeView"
+        size="x-small"
+        :icon="!panelChangeView ? 'mdi-arrow-expand-vertical' : 'mdi-arrow-collapse-vertical'"
+        :aria-label="!panelChangeView ? $t('actions.expand') : $t('actions.compact')"
+      />
     </div>
     <v-expansion-panels v-model="panel" :multiple="panelChangeView">
       <v-expansion-panel

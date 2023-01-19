@@ -115,7 +115,6 @@ async function validate () {
                   item-title="label"
                   item-value="value"
                   return-object
-                  single-line
                   :items="[
                     { label: $t('register.form.investiment'), value: 'investiment' },
                     { label: $t('register.form.expense'), value: 'expense' },
@@ -128,35 +127,35 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-text-field
-                :label="$t('register.form.name')"
+                  :label="$t('register.form.name')"
                   v-model="name"
                   :rules="nameRules"
                   required
-                ></v-text-field>
+                />
               </v-col>
               <v-col
                 cols="12"
                 class="pa-0 pb-2"
               >
                 <v-text-field
-                :label="$t('register.form.value')"
+                  :label="$t('register.form.value')"
                   v-model="value"
                   prefix="$"
                   type="number"
                   :rules="valueRules"
                   required
-                ></v-text-field>
+                />
               </v-col>
               <v-col
                 cols="12"
                 class="pa-0 pb-2"
               >
                 <v-textarea
-                :label="$t('register.form.description')"
+                  :label="$t('register.form.description')"
                   v-model="description"
                   :rules="descriptionRules"
                   required
-                ></v-textarea>
+                />
               </v-col>
             </v-row>
           </v-form>
