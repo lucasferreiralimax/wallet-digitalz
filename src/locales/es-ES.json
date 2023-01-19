@@ -1,10 +1,43 @@
 {
   "version": "Versión",
+  "nav": {
+    "home": "Comienzo",
+    "about": "Informes",
+    "contact": "Contacto"
+  },
   "home": {
     "lets": "Comience sus registros ahora",
     "about": "Esta aplicación es para ayudarlo a administrar su dinero, gastos e inversiones.",
     "liquid": "Líquido",
     "money": "Dinero"
+  },
+  "about": {
+    "project": {
+      "title": "Sobre el proyecto",
+      "text1": "Este proyecto está destinado a ayudarte a organizar tus finanzas.",
+      "text2": "Con una forma sencilla de crear los registros de gastos y montos",
+      "text3": "Cree libremente sus registros con la libertad de eliminarlos y actualizarlos"
+    },
+    "tech": {
+      "title": "Tecnologías",
+      "text1": "Proyecto creado usando Vue.js en su última versión",
+      "text2": "Utilización de las mejores prácticas de desarrollo de PWA",
+      "text3": "Desarrollado y mantenido por profesionales en el web",
+      "text4": "Proyecto gratuito y de código abierto para consulta y estudio.",
+      "text5": "Si quieres colaborar entra en",
+      "text6": "repositorio en Github",
+      "text7": "Siéntete libre de ayudar con el desarrollo."
+    },
+    "objective": {
+      "title": "Metas",
+      "text1": "Asistir en la organización de gastos, entrada de valores e inversiones.",
+      "text2": "Ayuda con la visibilidad y la integridad de su salud financiera"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "text1": "Si tienes algún comentario o necesitas ayuda",
+    "text2": "Contáctenos"
   },
   "register": {
     "create": "Crear registro",
