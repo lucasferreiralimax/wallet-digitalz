@@ -28,3 +28,12 @@
 .v-overlay-container .v-overlay.v-dialog {
   backdrop-filter: brightness(0.5) blur(5px);
 }
+
+.text-link {
+  text-decoration: none;
+  color: rgba(var(--v-theme-success));
+}
+
+.list {
+  margin-left: 1rem;
+}
