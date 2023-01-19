@@ -34,7 +34,7 @@ const typeColors: any = {
       <ModalRegister />
       <v-btn
         v-if="wallet.registers.length"
-        class="ma-2"
+        class="ma-2 ml-auto"
         @click="changeView"
         size="x-small"
         :icon="!panelChangeView ? 'mdi-arrow-expand-vertical' : 'mdi-arrow-collapse-vertical'"
