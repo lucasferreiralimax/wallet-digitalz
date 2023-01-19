@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useWalletStore } from '@/stores/wallet'
-import Registers from '@/components/Registers/index.vue'
 import Language from '@/components/Language/index.vue'
 import Logo from '@/components/Logo.vue'
 import pkg from '../package.json';
 
-const appVersion: string = pkg.version;
-const wallet = useWalletStore()
+const appVersion: string = pkg.version
 const theme = ref('light')
 const drawer = ref(false)
 
@@ -33,7 +30,9 @@ onMounted(() => {
   <v-app :theme="theme">
     <v-app-bar>
       <v-container class="max-width d-flex justify-space-between">
-        <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
+        <router-link to="/" class="logo">
+          <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
+        </router-link>
         <v-spacer></v-spacer>
         <v-btn
           role="button"
@@ -52,28 +51,31 @@ onMounted(() => {
       rail-width="150"
       temporary
     >
-      <v-list-item>
-        <Language />
-      </v-list-item>
-      <v-divider />
-      <v-list-item>
-        <v-btn
+      <v-list>
+        <router-link class="nav-item" to="/">{{ $t('nav.home') }}</router-link>
+        <v-divider />
+        <router-link class="nav-item" to="/about">{{ $t('nav.about') }}</router-link>
+        <v-divider />
+        <router-link class="nav-item" to="/contact">{{ $t('nav.contact') }}</router-link>
+        <v-divider />
+        <v-list-item>
+          <Language />
+        </v-list-item>
+        <v-divider />
+        <v-list-item>
+          <v-btn
           block
           :prepend-icon="theme === 'light' ? 'mdi-lightbulb-on' : 'mdi-lightbulb-off'"
           @click="toggleTheme"
-        >{{ theme }}</v-btn>
-      </v-list-item>
+          >{{ theme }}</v-btn>
+        </v-list-item>
+      </v-list>
       <v-divider />
     </v-navigation-drawer>
 
     <v-main class="main">
       <v-container class="max-width">
-        <template v-if="!wallet.registers.length">
-          <h2>{{ $t('home.lets') }}</h2>
-          <p>{{ $t('home.about') }}</p>
-          <v-divider class="divider my-2" />
-        </template>
-        <Registers />
+        <router-view />
       </v-container>
     </v-main>
 
@@ -94,6 +96,25 @@ onMounted(() => {
 <style scoped>
 .max-width {
   max-width: 700px;
+}
+.logo {
+  text-decoration: none;
+  color: rgba(var(--v-theme-on-surface));
+}
+.logo.router-link-exact-active {
+  pointer-events: none;
+}
+.nav-item {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  padding: .8rem .5rem;
+  color: rgba(var(--v-theme-on-surface));
+  justify-content: center;
+}
+.nav-item.router-link-exact-active {
+  background: rgba(var(--v-theme-main));
+  color: rgba(var(--v-theme-success));
 }
 .main {
   background: rgba(var(--v-theme-main));

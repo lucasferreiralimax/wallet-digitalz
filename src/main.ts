@@ -9,6 +9,7 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import i18n from './i18n'
+import router from './router'
 
 const vuetify = createVuetify({
   components,
@@ -33,4 +34,9 @@ const vuetify = createVuetify({
   }
 })
 
-createApp(App).use(i18n()).use(createPinia()).use(vuetify).mount('#app')
+createApp(App)
+  .use(i18n())
+  .use(createPinia())
+  .use(router)
+  .use(vuetify)
+  .mount('#app')
