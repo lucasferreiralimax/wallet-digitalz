@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import Language from '@/components/Language/index.vue'
-import Logo from '@/components/Logo.vue'
-import pkg from '../package.json';
+import Logo from '@/components/index.vue'
+import pkg from '../package.json'
 
 const appVersion: string = pkg.version
 const theme = ref('light')
