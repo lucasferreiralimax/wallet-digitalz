@@ -1,14 +1,6 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
-import { Register, TypeRegister } from '@/types'
-
-interface typeValue {
-  type: TypeRegister;
-}
-
-interface typeValue {
-  value: number;
-}
+import { Register, sortValue, typeValue } from '@/types'
 
 function getTotal (registers: any) {
   return registers.reduce((a: number, { value }: Register) => Number(value) + Number(a), 0)
@@ -17,7 +9,7 @@ function getTotal (registers: any) {
 function shortRegisters (registers: any, type: string) {
   const entrys = registers.filter(({ type: { value }} : typeValue) => value == type)
   return [
-    ...entrys.sort((a: typeValue, b: typeValue) => b.value - a.value)
+    ...entrys.sort((a: sortValue, b: sortValue) => b.value - a.value)
   ]
 }
 

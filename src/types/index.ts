@@ -14,3 +14,11 @@ export type Register = {
 export type RegisterIds = {
   id: string;
 }
+
+export interface typeValue {
+  type: TypeRegister;
+}
+
+export interface sortValue {
+  value: number;
+}
