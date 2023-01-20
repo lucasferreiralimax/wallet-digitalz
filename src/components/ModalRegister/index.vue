@@ -115,6 +115,7 @@ async function validate () {
                   item-title="label"
                   item-value="value"
                   return-object
+                  required
                   :items="[
                     { label: $t('register.form.investiment'), value: 'investiment' },
                     { label: $t('register.form.expense'), value: 'expense' },
