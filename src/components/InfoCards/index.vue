@@ -10,14 +10,14 @@ const wallet = useWalletStore()
 
 <template>
   <v-row>
-    <v-col v-if="wallet.getEntryTotal">
+    <v-col v-if="wallet.getTotal">
       <Information
         :title="$t('home.money')"
         :value="parseMoney(wallet.getTotal, locale)"
         type="entry"
       />
     </v-col>
-    <v-col v-if="wallet.getExpensesTotal">
+    <v-col v-if="wallet.getTotalLessExpense">
       <Information
         :title="$t('home.liquid')"
         :value="parseMoney(wallet.getTotalLessExpense, locale)"
