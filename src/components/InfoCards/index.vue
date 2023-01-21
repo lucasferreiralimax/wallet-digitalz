@@ -10,17 +10,15 @@ const wallet = useWalletStore()
 
 <template>
   <v-row>
-    <v-col>
+    <v-col v-if="wallet.getEntryTotal">
       <Information
-        v-if="wallet.getEntryTotal"
         :title="$t('home.money')"
         :value="parseMoney(wallet.getTotal, locale)"
         type="entry"
       />
     </v-col>
-    <v-col>
+    <v-col v-if="wallet.getExpensesTotal">
       <Information
-        v-if="wallet.getExpensesTotal"
         :title="$t('home.liquid')"
         :value="parseMoney(wallet.getTotalLessExpense, locale)"
         type="liquid"
@@ -28,25 +26,22 @@ const wallet = useWalletStore()
     </v-col>
   </v-row>
   <v-row>
-    <v-col>
+    <v-col v-if="wallet.getEntryTotal">
       <Information
-        v-if="wallet.getEntryTotal"
         :title="$t('register.form.entry')"
         :value="parseMoney(wallet.getEntryTotal, locale)"
         type="entry"
       />
     </v-col>
-    <v-col>
+    <v-col v-if="wallet.getExpensesTotal">
       <Information
-        v-if="wallet.getExpensesTotal"
         :title="$t('register.form.expense')"
         :value="parseMoney(wallet.getExpensesTotal, locale)"
         type="expense"
       />
     </v-col>
-    <v-col>
+    <v-col v-if="wallet.getInvestimentTotal">
       <Information
-        v-if="wallet.getInvestimentTotal"
         :title="$t('register.form.investiment')"
         :value="parseMoney(wallet.getInvestimentTotal, locale)"
         type="investiment"
