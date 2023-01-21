@@ -2,11 +2,14 @@
 import { ref, onMounted } from 'vue'
 import Language from '@/components/Language/index.vue'
 import Logo from '@/components/Logo/index.vue'
+import ModalRegister from '@/components/ModalRegister/index.vue'
+import { useDisplay } from 'vuetify'
 import pkg from '../package.json'
 
 const appVersion: string = pkg.version
 const theme = ref('light')
-const drawer = ref(false)
+const drawer = ref(true)
+const { xs } = useDisplay()
 
 function setTheme (value: string) {
   localStorage.setItem('theme', value)
@@ -21,6 +24,10 @@ function toggleTheme () {
 }
 
 onMounted(() => {
+  if (xs.value) {
+    drawer.value = false;
+  }
+
   theme.value = localStorage.getItem('theme') ? String(localStorage.getItem('theme')) : 'light';
   setTheme(theme.value)
 })
@@ -29,29 +36,32 @@ onMounted(() => {
 <template>
   <v-app :theme="theme">
     <v-app-bar>
-      <v-container class="max-width d-flex justify-space-between">
-        <router-link to="/" class="logo">
-          <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
-        </router-link>
-        <v-spacer></v-spacer>
-        <v-btn
-          role="button"
-          aria-label="Button menu drawer"
-          @click.stop="drawer = !drawer"
-          size="x-small"
-          :icon="drawer ? 'mdi-close' : 'mdi-menu'"
-        />
-      </v-container>
+      <v-btn
+        v-if="xs"
+        role="button"
+        aria-label="Button menu drawer"
+        @click.stop="drawer = !drawer"
+        size="x-xsall"
+        :icon="drawer ? 'mdi-close' : 'mdi-menu'"
+      />
+      <router-link to="/" class="logo ml-4">
+        <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
+      </router-link>
+      <v-spacer />
+      <ModalRegister />
     </v-app-bar>
 
     <v-navigation-drawer
       v-model="drawer"
-      location="right"
+      class="elevation-5"
+      location="left"
       rail
-      rail-width="150"
-      temporary
+      :rail-width="xs ? '150' : '220'"
+      :floating="!xs"
+      :permanent="!xs"
+      :temporary="xs"
     >
-      <v-list>
+      <v-list class="py-0">
         <router-link class="nav-item" to="/">{{ $t('nav.home') }}</router-link>
         <v-divider />
         <router-link class="nav-item" to="/about">{{ $t('nav.about') }}</router-link>
@@ -74,29 +84,26 @@ onMounted(() => {
     </v-navigation-drawer>
 
     <v-main class="main">
-      <v-container class="max-width">
+      <div class="pa-sm-10 pa-4">
         <router-view />
-      </v-container>
+      </div>
+      <v-footer>
+        <v-row>
+          <v-col class="text-center">
+            <p>
+              <a class="footer-text text-decoration-none" href="https://lucas-frontend.web.app" target="_blank">
+                <Logo  class="logo-footer mr-2"/> {{ new Date().getFullYear() }}
+              </a>
+              — {{ $t('version') }} {{ appVersion }}
+            </p>
+          </v-col>
+        </v-row>
+      </v-footer>
     </v-main>
-
-    <v-footer>
-      <v-row>
-        <v-col class="text-center">
-          <a class="footer-text text-decoration-none" href="https://lucas-frontend.web.app" target="_blank">
-            <Logo  class="logo-footer mr-2"/> <strong>Wallet Digitalz</strong> — {{ new Date().getFullYear() }}
-          </a>
-          <br>
-          <p>{{ $t('version') }} {{ appVersion }}</p>
-        </v-col>
-      </v-row>
-    </v-footer>
   </v-app>
 </template>
 
 <style scoped>
-.max-width {
-  max-width: 700px;
-}
 .logo {
   text-decoration: none;
   color: rgba(var(--v-theme-on-surface));

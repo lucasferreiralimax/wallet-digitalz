@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, watch  } from 'vue'
 import { useWalletStore } from '@/stores/wallet'
-import ModalRegister from '@/components/ModalRegister/index.vue'
 import ModalDelete from '@/components/ModalDelete/index.vue'
 import { RegisterIds } from '@/types'
 import { parseMoney } from '@/utils'
@@ -30,16 +29,61 @@ const typeColors: any = {
 
 <template>
   <div>
-    <div class="text-center d-flex pb-4">
-      <ModalRegister />
+    <div v-if="wallet.getTotal" class="mb-4">
+      <v-row>
+        <v-col>
+          <v-card class="information money d-flex flex-column text-uppercase pa-4" v-if="wallet.getEntryTotal">
+            <span class="text-success text-caption text-uppercase font-weight-bold">{{ $t('home.money') }}</span>
+            <b class="mr-2 text-h5">{{ parseMoney(wallet.getTotal, locale) }}</b>
+          </v-card>
+        </v-col>
+        <v-col>
+          <v-card class="information liquid d-flex flex-column text-uppercase pa-4" v-if="wallet.getExpensesTotal">
+            <span class="text-warning text-caption text-uppercase font-weight-bold">{{ $t('home.liquid') }}</span>
+            <b class="text-h5 mr-2">{{ parseMoney(wallet.getTotalLessExpense, locale) }}</b>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-card class="information money d-flex flex-column text-uppercase pa-4">
+            <span class="text-light-green text-caption text-uppercase font-weight-bold">{{ $t('register.form.entry') }}</span>
+            <b class="text-h6 mr-2">{{ parseMoney(wallet.getEntryTotal, locale) }}</b>
+          </v-card>
+        </v-col>
+        <v-col>
+          <v-card class="information expense d-flex flex-column text-uppercase pa-4" v-if="wallet.getExpensesTotal">
+            <span class="text-error text-caption text-uppercase font-weight-bold">{{ $t('register.form.expense') }}</span>
+            <b class="mr-2 text-h6">{{ parseMoney(wallet.getExpensesTotal, locale) }}</b>
+          </v-card>
+        </v-col>
+        <v-col>
+          <v-card class="information investiment d-flex flex-column text-uppercase pa-4" v-if="wallet.getInvestimentTotal">
+            <span class="text-info text-caption text-uppercase font-weight-bold">{{ $t('register.form.investiment') }}</span>
+            <b class="mr-2 text-h6">{{ parseMoney(wallet.getInvestimentTotal, locale) }}</b>
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
+    <v-divider />
+    <div class="d-flex align-start mb-4 mt-2">
+      <h3>Listagem de registros</h3>
       <v-btn
         v-if="wallet.registers.length"
-        class="ma-2 ml-auto"
+        class="ml-auto"
         @click="changeView"
         size="x-small"
-        :icon="!panelChangeView ? 'mdi-arrow-expand-vertical' : 'mdi-arrow-collapse-vertical'"
+        icon
         :aria-label="!panelChangeView ? $t('actions.expand') : $t('actions.compact')"
-      />
+      >
+        <v-tooltip
+          activator="parent"
+          location="left"
+        >
+          {{ !panelChangeView ? $t('actions.expand') : $t('actions.compact') }}
+        </v-tooltip>
+        <v-icon :icon="!panelChangeView ? 'mdi-arrow-expand-vertical' : 'mdi-arrow-collapse-vertical'"/>
+      </v-btn>
     </div>
     <v-expansion-panels v-model="panel" :multiple="panelChangeView">
       <v-expansion-panel
@@ -79,28 +123,6 @@ const typeColors: any = {
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
-    <div v-if="wallet.getTotal" class="d-flex pa-4 justify-end flex-column">
-      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
-        <b class="text-error mr-2">{{ parseMoney(wallet.getExpensesTotal, locale) }}</b>
-        <span class="text-caption text-uppercase">{{ $t('register.form.expense') }}</span>
-      </p>
-      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getEntryTotal">
-        <b class="text-success mr-2">{{ parseMoney(wallet.getEntryTotal, locale) }}</b>
-        <span class="text-caption text-uppercase">{{ $t('register.form.entry') }}</span>
-      </p>
-      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getInvestimentTotal">
-        <b class="text-info mr-2">{{ parseMoney(wallet.getInvestimentTotal, locale) }}</b>
-        <span class="text-caption text-uppercase">{{ $t('register.form.investiment') }}</span>
-      </p>
-      <p class="d-flex align-center justify-end text-uppercase" v-if="wallet.getExpensesTotal">
-        <b class="text-amber-darken-2 text-h5 mr-2">{{ parseMoney(wallet.getTotalLessExpense, locale) }}</b>
-        {{ $t('home.liquid') }}
-      </p>
-      <p class="d-flex align-center justify-end text-uppercase">
-        <b class="text-light-green text-h4 mr-2">{{ parseMoney(wallet.getTotal, locale) }}</b>
-        {{ $t('home.money') }}
-      </p>
-    </div>
   </div>
 </template>
 
@@ -110,13 +132,16 @@ const typeColors: any = {
   right: 35px;
   transform: translateY(1px);
 }
-.register.info {
+.register.info, .information.investiment {
   box-shadow: inset 2px 0 0 rgba(var(--v-theme-info));
 }
-.register.error {
+.register.error, .information.expense {
   box-shadow: inset 2px 0 0 rgba(var(--v-theme-error));
 }
-.register.success {
+.register.success, .information.money {
   box-shadow: inset 2px 0 0 rgba(var(--v-theme-success));
+}
+.information.liquid {
+  box-shadow: inset 2px 0 0 rgba(var(--v-theme-warning));
 }
 </style>

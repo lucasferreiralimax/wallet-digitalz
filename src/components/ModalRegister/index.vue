@@ -82,8 +82,8 @@ async function validate () {
       <v-btn
         v-if="!update"
         color="success"
-        class="ma-2"
         v-bind="props"
+        variant="flat"
       >
         <v-icon class="mr-2" icon="mdi-plus" />
         {{ $t('actions.register') }}
@@ -164,7 +164,7 @@ async function validate () {
         <small class="d-flex mt-4">{{ $t('register.form.indicates') }}</small>
       </v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
+        <v-spacer />
         <v-btn
           color="error"
           variant="text"
