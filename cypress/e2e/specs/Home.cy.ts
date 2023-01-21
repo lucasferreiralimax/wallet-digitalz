@@ -12,9 +12,6 @@ describe('Test render Home page pt-BR', () => {
     cy.contains('p', 'Este aplicativo é para ajudar a gerenciar seu dinheiro, despesas e investimentos')
   })
   it('Render text footer', () => {
-    cy.contains('a', 'Wallet Digitalz — 2023')
-  })
-  it('Render version in footer', () => {
-    cy.contains('p', `Versão ${appVersion}`)
+    cy.contains('a', `2023 — Versão ${appVersion}`)
   })
 })
