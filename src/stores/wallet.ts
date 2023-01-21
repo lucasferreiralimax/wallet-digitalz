@@ -30,8 +30,8 @@ export const useWalletStore = defineStore('wallet', {
     getEntryTotal: ({ getEntrys })  => getTotal(getEntrys),
     getExpensesTotal: ({ getExpenses })  => getTotal(getExpenses),
     getInvestimentTotal: ({ getInvestiments })  => getTotal(getInvestiments),
-    getTotalLessExpense: ({ getEntryTotal, getExpensesTotal, getInvestimentTotal })  => {
-      return Number(getEntryTotal - getExpensesTotal);
+    getTotalLessExpense: ({ getEntryTotal, getExpensesTotal })  => {
+      return getEntryTotal ? Number(getEntryTotal - getExpensesTotal) : 0;
     },
     getTotal: ({ getEntryTotal, getInvestimentTotal })  => Number(getEntryTotal + getInvestimentTotal),
   },
