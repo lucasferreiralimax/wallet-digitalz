@@ -3,10 +3,9 @@ import { ref, onMounted } from 'vue'
 import Language from '@/components/Language/index.vue'
 import Logo from '@/components/Logo/index.vue'
 import ModalRegister from '@/components/ModalRegister/index.vue'
+import Footer from '@/components/Footer/index.vue'
 import { useDisplay } from 'vuetify'
-import pkg from '../package.json'
 
-const appVersion: string = pkg.version
 const theme = ref('light')
 const drawer = ref(true)
 const { xs } = useDisplay()
@@ -87,18 +86,7 @@ onMounted(() => {
       <div class="pa-sm-10 pa-4">
         <router-view />
       </div>
-      <v-footer>
-        <v-row>
-          <v-col class="text-center">
-            <p>
-              <a class="footer-text text-decoration-none" href="https://lucas-frontend.web.app" target="_blank">
-                <Logo  class="logo-footer mr-2"/> {{ new Date().getFullYear() }}
-              </a>
-              — {{ $t('version') }} {{ appVersion }}
-            </p>
-          </v-col>
-        </v-row>
-      </v-footer>
+      <Footer />
     </v-main>
   </v-app>
 </template>
@@ -125,11 +113,5 @@ onMounted(() => {
 }
 .main {
   background: rgba(var(--v-theme-main));
-}
-.logo-footer {
-  transform: translateY(5px);
-}
-.footer-text {
-  color: rgba(var(--v-theme-on-surface));
 }
 </style>

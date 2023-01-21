@@ -1,10 +1,12 @@
 .light {
+  background: var(--background-primary);
   --background-primary: #fff;
   --background-primary-rgba: rgba(#000,.2);
   --box-shadow-primary-rgba: rgba(#fff, .2);
 }
 
 .dark {
+  background: var(--background-primary);
   --background-primary: #222;
   --background-primary-rgba: rgba(#fff,.2);
   --box-shadow-primary-rgba: rgba(#222, .2);
