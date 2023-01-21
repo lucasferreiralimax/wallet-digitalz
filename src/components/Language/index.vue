@@ -18,14 +18,14 @@ watch(locale, (val) => {
     single-line
     :items="[...supportLocales]"
     density="compact"
-    variant="solo"
+    variant="underlined"
     hide-details="auto"
   />
 </template>
 
 <style>
 .language {
-  width: 105px;
+  width: 85px;
   margin: 0 auto;
 }
 </style>
