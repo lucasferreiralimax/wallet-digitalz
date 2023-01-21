@@ -70,18 +70,20 @@ onMounted(() => {
           {{ $t('nav.contact') }}
         </v-list-item>
         <v-divider />
+      </v-list>
+      <template v-slot:append>
+        <v-list-item class="mb-4">
+          <Language />
+        </v-list-item>
+        <v-divider />
         <v-list-item
+          class="mb-4"
           @click="toggleTheme"
           :prepend-icon="theme === 'light' ? 'mdi-lightbulb-on' : 'mdi-lightbulb-off'"
         >
           <span class="text-capitalize">{{ theme }}</span>
         </v-list-item>
-        <v-divider />
-        <v-list-item>
-          <Language />
-        </v-list-item>
-      </v-list>
-      <v-divider />
+      </template>
     </v-navigation-drawer>
 
     <v-main class="main">
