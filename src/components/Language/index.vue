@@ -13,7 +13,6 @@ watch(locale, (val) => {
 <template>
   <v-select
     label="Language"
-    class="language"
     v-model="locale"
     single-line
     :items="[...supportLocales]"
@@ -22,10 +21,3 @@ watch(locale, (val) => {
     hide-details="auto"
   />
 </template>
-
-<style>
-.language {
-  width: 85px;
-  margin: 0 auto;
-}
-</style>

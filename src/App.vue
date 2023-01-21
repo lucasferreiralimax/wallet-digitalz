@@ -23,10 +23,7 @@ function toggleTheme () {
 }
 
 onMounted(() => {
-  if (xs.value) {
-    drawer.value = false;
-  }
-
+  if (xs.value) drawer.value = false;
   theme.value = localStorage.getItem('theme') ? String(localStorage.getItem('theme')) : 'light';
   setTheme(theme.value)
 })
@@ -55,28 +52,33 @@ onMounted(() => {
       class="elevation-5"
       location="left"
       rail
-      :rail-width="xs ? '150' : '220'"
+      rail-width="220"
       :floating="!xs"
       :permanent="!xs"
       :temporary="xs"
     >
-      <v-list class="py-0">
-        <router-link class="nav-item" to="/">{{ $t('nav.home') }}</router-link>
+      <v-list class="pa-0">
+        <v-list-item router-link to="/" prepend-icon="mdi-home">
+          {{ $t('nav.home') }}
+        </v-list-item>
         <v-divider />
-        <router-link class="nav-item" to="/about">{{ $t('nav.about') }}</router-link>
+        <v-list-item router-link to="/about" prepend-icon="mdi-information-variant">
+          {{ $t('nav.about') }}
+        </v-list-item>
         <v-divider />
-        <router-link class="nav-item" to="/contact">{{ $t('nav.contact') }}</router-link>
+        <v-list-item router-link to="/contact" prepend-icon="mdi-earth">
+          {{ $t('nav.contact') }}
+        </v-list-item>
         <v-divider />
-        <v-list-item>
-          <Language />
+        <v-list-item
+          @click="toggleTheme"
+          :prepend-icon="theme === 'light' ? 'mdi-lightbulb-on' : 'mdi-lightbulb-off'"
+        >
+          <span class="text-capitalize">{{ theme }}</span>
         </v-list-item>
         <v-divider />
         <v-list-item>
-          <v-btn
-          block
-          :prepend-icon="theme === 'light' ? 'mdi-lightbulb-on' : 'mdi-lightbulb-off'"
-          @click="toggleTheme"
-          >{{ theme }}</v-btn>
+          <Language />
         </v-list-item>
       </v-list>
       <v-divider />
@@ -98,18 +100,6 @@ onMounted(() => {
 }
 .logo.router-link-exact-active {
   pointer-events: none;
-}
-.nav-item {
-  text-decoration: none;
-  width: 100%;
-  display: flex;
-  padding: .8rem .5rem;
-  color: rgba(var(--v-theme-on-surface));
-  justify-content: center;
-}
-.nav-item.router-link-exact-active {
-  background: rgba(var(--v-theme-main));
-  color: rgba(var(--v-theme-success));
 }
 .main {
   background: rgba(var(--v-theme-main));
