@@ -35,7 +35,7 @@ const typeColors: any = {
     v-if="wallet.registers.length"
     class="d-flex align-start mb-4 mt-8"
   >
-    <h3>Listagem de registros</h3>
+    <h3>{{ $t('home.list') }}</h3>
     <v-btn
       class="ml-auto"
       @click="changeView"
