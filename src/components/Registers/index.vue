@@ -7,7 +7,9 @@ import InfoCards from '@/components/InfoCards/index.vue'
 import { RegisterIds } from '@/types'
 import { parseMoney } from '@/utils'
 import { useI18n } from 'vue-i18n'
+import { useDisplay } from 'vuetify'
 
+const { xs } = useDisplay()
 const { locale } = useI18n()
 const wallet = useWalletStore()
 const panel = ref<RegisterIds[]>([])
@@ -39,17 +41,22 @@ const typeColors: any = {
     <v-btn
       class="ml-auto"
       @click="changeView"
-      size="x-small"
-      icon
+      :size="xs ? 'x-small' : 'small'"
+      :icon="xs"
       :aria-label="!panelChangeView ? $t('actions.expand') : $t('actions.compact')"
     >
-      <v-tooltip
-        activator="parent"
-        location="left"
-      >
-        {{ !panelChangeView ? $t('actions.expand') : $t('actions.compact') }}
-      </v-tooltip>
       <v-icon :icon="!panelChangeView ? 'mdi-arrow-expand-vertical' : 'mdi-arrow-collapse-vertical'"/>
+      <template v-if="xs">
+        <v-tooltip
+          activator="parent"
+          location="left"
+        >
+          {{ !panelChangeView ? $t('actions.expand') : $t('actions.compact') }}
+        </v-tooltip>
+      </template>
+      <template v-else>
+        <span class="ml-2">{{ !panelChangeView ? $t('actions.expand') : $t('actions.compact') }}</span>
+      </template>
     </v-btn>
   </div>
   <v-expansion-panels v-model="panel" :multiple="panelChangeView">
