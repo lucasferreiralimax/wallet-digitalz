@@ -1,0 +1,86 @@
+{
+  "version": "Sürüm",
+  "nav": {
+    "home": "Başlangıç",
+    "about": "Hakkında",
+    "contact": "Temas"
+  },
+  "home": {
+    "lets": "Kayıtlarınızı şimdi başlatın",
+    "about": "Bu uygulama paranızı, harcamalarınızı ve yatırımlarınızı yönetmenize yardımcı olmak içindir.",
+    "liquid": "Sıvı",
+    "money": "Peşin",
+    "list": "kayıt listesi"
+  },
+  "about": {
+    "project": {
+      "title": "Proje hakkında",
+      "text1": "Bu proje, mali durumunuzu düzenlemenize yardımcı olmayı amaçlamaktadır.",
+      "text2": "Masrafların ve tutarların kayıtlarını oluşturmanın basit bir yolu ile",
+      "text3": "Kayıtlarınızı silme ve güncelleme özgürlüğüyle özgürce oluşturun"
+    },
+    "tech": {
+      "title": "teknolojiler",
+      "text1": "En son sürümünde Vue.js kullanılarak oluşturulan proje",
+      "text2": "PWA geliştirme en iyi uygulamalarını kullanma",
+      "text3": "Profesyoneller tarafından geliştirildi ve sürdürüldü",
+      "text4": "Danışma ve çalışma için ücretsiz ve açık kaynaklı proje",
+      "text5": "İşbirliği yapmak istiyorsanız, şu adrese gidin:",
+      "text6": "Github'daki depo",
+      "text7": "Geliştirmeye yardımcı olmaktan çekinmeyin."
+    },
+    "objective": {
+      "title": "Hedefler",
+      "text1": "Harcamaların organizasyonuna, değerlerin ve yatırımların girilmesine yardımcı olun",
+      "text2": "Finansal sağlığınızın görünürlüğü ve eksiksizliği konusunda yardım"
+    }
+  },
+  "contact": {
+    "title": "Temas",
+    "text1": "Herhangi bir geri bildiriminiz varsa veya yardıma ihtiyacınız varsa",
+    "text2": "Bize Ulaşın"
+  },
+  "register": {
+    "create": "kayıt oluştur",
+    "update": "kaydı güncelle",
+    "delete": "kaydı sil",
+    "deleteMsg": "{value} değerine sahip {name} kaydını silmek istiyor musunuz?",
+    "form": {
+      "type": "Kayıt tipi *",
+      "name": "Kayıt ismi *",
+      "value": "Kayıt değeri *",
+      "description": "Kayıt Açıklaması *",
+      "indicates": "* Bir alanın zorunlu olduğunu gösterir",
+      "investiment": "Yatırım",
+      "expense": "gider",
+      "entry": "yasak",
+      "rules": {
+        "type": {
+          "required": "tür gerekli"
+        },
+        "name": {
+          "required": "İsim gerekli",
+          "less": "Ad 15 harften az olmalıdır"
+        },
+        "value": {
+          "required": "değer gerekli",
+          "less": "Değer, {value} değerinden küçük olmalıdır"
+        },
+        "description": {
+          "required": "Açıklama gerekli",
+          "less": "Açıklama 250 harften az olmalıdır",
+          "more": "Açıklama 20 harften uzun olmalıdır"
+        }
+      }
+    }
+  },
+  "actions": {
+    "create": "Oluşturmak",
+    "save": "Kaydetmek",
+    "confirm": "Teyit etmek",
+    "cancel": "İptal",
+    "register": "Kayıt",
+    "expand": "hepsini genişlet",
+    "compact": "hepsini sıkıştır"
+  }
+}

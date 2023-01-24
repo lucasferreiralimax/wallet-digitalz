@@ -6,6 +6,7 @@ export const parseMoney = (money: string | number, country: string) => {
     'es-ES': 'EUR',
     'ru-RU': 'RUB',
     'zh-CN': 'CNY',
+    'tr-TR': 'TUR',
   }
   return new Intl.NumberFormat(country, { style: 'currency', currency: currencys[country] }).format(number)
 }
