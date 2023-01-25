@@ -84,6 +84,7 @@ async function validate () {
         color="success"
         v-bind="props"
         variant="flat"
+        class="mr-sm-10 mr-4"
       >
         <v-icon class="mr-2" icon="mdi-plus" />
         {{ $t('actions.register') }}
