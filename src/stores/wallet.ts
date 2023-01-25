@@ -30,10 +30,12 @@ export const useWalletStore = defineStore('wallet', {
     getEntryTotal: ({ getEntrys })  => getTotal(getEntrys),
     getExpensesTotal: ({ getExpenses })  => getTotal(getExpenses),
     getInvestimentTotal: ({ getInvestiments })  => getTotal(getInvestiments),
-    getTotalLessExpense: ({ getEntryTotal, getExpensesTotal })  => {
-      return getEntryTotal ? Number(getEntryTotal - getExpensesTotal) : 0;
+    getTotalLessExpense: ({ getEntryTotal: entrys, getExpensesTotal: expenses })  => {
+      return entrys ? Number(entrys - expenses) : 0;
     },
-    getTotal: ({ getEntryTotal, getInvestimentTotal })  => Number(getEntryTotal + getInvestimentTotal),
+    getTotal: ({ getEntryTotal: entrys, getInvestimentTotal: investiments })  => {
+      return entrys && investiments ? Number(entrys + investiments) : 0;
+    },
   },
   actions: {
     newRegister(register: Register) {

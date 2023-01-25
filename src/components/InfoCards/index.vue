@@ -9,7 +9,7 @@ const wallet = useWalletStore()
 </script>
 
 <template>
-  <v-row>
+  <v-row v-if="wallet.getTotal || wallet.getTotalLessExpense">
     <v-col v-if="wallet.getTotal">
       <Information
         :title="$t('home.money')"
@@ -25,7 +25,7 @@ const wallet = useWalletStore()
       />
     </v-col>
   </v-row>
-  <v-row>
+  <v-row v-if="wallet.getEntryTotal || wallet.getExpensesTotal || wallet.getInvestimentTotal">
     <v-col v-if="wallet.getEntryTotal">
       <Information
         :title="$t('register.form.entry')"
