@@ -15,7 +15,7 @@ const typeColors: any = {
 
 <template>
   <v-card
-    class="information d-flex flex-column text-uppercase pa-4 elevation-2"
+    class="highlight-top d-flex flex-column text-uppercase pa-4 elevation-2"
     :class="type"
   >
     <span
@@ -29,16 +29,16 @@ const typeColors: any = {
 </template>
 
 <style>
-.information.investiment {
+.highlight-top.investiment {
   border-top: 4px solid rgba(var(--v-theme-info));
 }
-.information.expense {
+.highlight-top.expense {
   border-top: 4px solid rgba(var(--v-theme-error));
 }
-.information.entry {
+.highlight-top.entry {
   border-top: 4px solid rgba(var(--v-theme-success));
 }
-.information.liquid {
+.highlight-top.liquid {
   border-top: 4px solid rgba(var(--v-theme-warning));
 }
 </style>

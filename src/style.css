@@ -39,3 +39,7 @@
 .list {
   margin-left: 1rem;
 }
+
+.v-card.highlight-top {
+  border-top: 4px solid rgba(var(--v-theme-success));
+}

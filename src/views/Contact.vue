@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-4 mt-2 mb-4">
+  <v-card class="highlight-top pa-4 mb-4 elevation-2">
     <h2 class="mb-2 text-h5">{{ $t('contact.title') }}</h2>
     <p class="text-body-1 mb-4">
       {{ $t('contact.text1') }}

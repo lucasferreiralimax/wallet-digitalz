@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-4 mt-2 mb-4">
+  <v-card class="highlight-top pa-4 mb-8 elevation-2">
     <h2 class="mb-2 text-h5">{{ $t('about.project.title') }}</h2>
     <p class="text-body-1">
       {{ $t('about.project.text1') }}
@@ -11,7 +11,7 @@
       {{ $t('about.project.text3') }}
     </p>
   </v-card>
-  <v-card class="pa-4 mt-2 mb-4">
+  <v-card class="highlight-top pa-4 mb-8 elevation-2">
     <h2 class="mb-4 text-h5">{{ $t('about.tech.title') }}</h2>
     <p class="text-body-1">
       {{ $t('about.tech.text1') }}
@@ -39,7 +39,7 @@
       {{ $t('about.tech.text7') }}
     </p>
   </v-card>
-  <v-card class="pa-4 mt-2 mb-4">
+  <v-card class="highlight-top pa-4 mb-8 elevation-2">
     <h2 class="mb-4 text-h5">{{ $t('about.objective.title') }}</h2>
     <ol class="list">
       <li>{{ $t('about.tech.text1') }}</li>
