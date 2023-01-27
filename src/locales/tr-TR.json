@@ -3,11 +3,11 @@
   "nav": {
     "home": "Başlangıç",
     "about": "Hakkında",
-    "contact": "Temas"
+    "contact": "Bize Ulaşın"
   },
   "home": {
-    "lets": "Kayıtlarınızı şimdi başlatın",
-    "about": "Bu uygulama paranızı, harcamalarınızı ve yatırımlarınızı yönetmenize yardımcı olmak içindir.",
+    "lets": "Kayıtlarınızı şimdi oluşturun",
+    "about": "Bu uygulamanın amacı; paranızı, harcamalarınızı ve yatırımlarınızı yönetmenizde yardımcı olmaktır",
     "liquid": "Sıvı",
     "money": "Peşin",
     "list": "kayıt listesi"
@@ -16,28 +16,28 @@
     "project": {
       "title": "Proje hakkında",
       "text1": "Bu proje, mali durumunuzu düzenlemenize yardımcı olmayı amaçlamaktadır.",
-      "text2": "Masrafların ve tutarların kayıtlarını oluşturmanın basit bir yolu ile",
-      "text3": "Kayıtlarınızı silme ve güncelleme özgürlüğüyle özgürce oluşturun"
+      "text2": "Masraflarınızın ve tutarlarınızın kayıtlarını oluşturmanın basit bir yolu",
+      "text3": "Kayıtlarınızı gönlünüzce güncelleyen ve silin"
     },
     "tech": {
-      "title": "teknolojiler",
-      "text1": "En son sürümünde Vue.js kullanılarak oluşturulan proje",
+      "title": "Teknolojiler",
+      "text1": "Vue.js'in en son sürümünü kullanılarak oluşuturulmuştur",
       "text2": "PWA geliştirme en iyi uygulamalarını kullanma",
-      "text3": "Profesyoneller tarafından geliştirildi ve sürdürüldü",
+      "text3": "Profesyoneller tarafından geliştiriliyor",
       "text4": "Danışma ve çalışma için ücretsiz ve açık kaynaklı proje",
       "text5": "İşbirliği yapmak istiyorsanız, şu adrese gidin:",
-      "text6": "Github'daki depo",
+      "text6": "Github repo",
       "text7": "Geliştirmeye yardımcı olmaktan çekinmeyin."
     },
     "objective": {
       "title": "Hedefler",
-      "text1": "Harcamaların organizasyonuna, değerlerin ve yatırımların girilmesine yardımcı olun",
-      "text2": "Finansal sağlığınızın görünürlüğü ve eksiksizliği konusunda yardım"
+      "text1": "Gider, gelir ve yatırımlarınızın düzenli olmasına önem verin",
+      "text2": "Finansal sağlığınızın görünürlüğü ve eksiksizliğine önem verin"
     }
   },
   "contact": {
-    "title": "Temas",
-    "text1": "Herhangi bir geri bildiriminiz varsa veya yardıma ihtiyacınız varsa",
+    "title": "Bize ulaşmak için",
+    "text1": "Herhangi bir geri bildiriminiz veya ihtiyacınız varsa",
     "text2": "Bize Ulaşın"
   },
   "register": {
@@ -53,14 +53,14 @@
       "indicates": "* Bir alanın zorunlu olduğunu gösterir",
       "investiment": "Yatırım",
       "expense": "gider",
-      "entry": "yasak",
+      "entry": "gelir",
       "rules": {
         "type": {
           "required": "tür gerekli"
         },
         "name": {
           "required": "İsim gerekli",
-          "less": "Ad 15 harften az olmalıdır"
+          "less": "İsim 15 harften az olmalıdır"
         },
         "value": {
           "required": "değer gerekli",
@@ -75,11 +75,11 @@
     }
   },
   "actions": {
-    "create": "Oluşturmak",
-    "save": "Kaydetmek",
-    "confirm": "Teyit etmek",
+    "create": "Oluştur",
+    "save": "Kaydet",
+    "confirm": "Onayla",
     "cancel": "İptal",
-    "register": "Kayıt",
+    "register": "Kayıt ol",
     "expand": "hepsini genişlet",
     "compact": "hepsini sıkıştır"
   }
