@@ -30,7 +30,7 @@ const typeColors: any = {
 </script>
 
 <template>
-  <InfoCards class="mb-4" />
+  <InfoCards />
   <div
     v-if="wallet.registers.length"
     class="d-flex align-start mb-4 mt-8"
