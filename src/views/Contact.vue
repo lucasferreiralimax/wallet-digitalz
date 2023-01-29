@@ -59,7 +59,7 @@
   width: 100%;
   display: flex;
   background-size: cover;
-  background-position: -200px -200px !important;
+  background-position: -200px bottom !important;
   min-height: 100vh;
   z-index: 0;
   position: absolute;
@@ -73,7 +73,7 @@
   .background-world::before {
     width: calc(100% - 220px);
     margin-left: 220px;
-    background-position: -200px -100px !important;
+    background-position: -200px bottom !important;
   }
 }
 </style>
