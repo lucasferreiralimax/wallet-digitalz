@@ -87,9 +87,7 @@ onMounted(() => {
     </v-navigation-drawer>
 
     <v-main class="main">
-      <div class="pa-sm-10 pa-4 pt-6">
-        <router-view />
-      </div>
+      <router-view />
     </v-main>
     <Footer></Footer>
   </v-app>

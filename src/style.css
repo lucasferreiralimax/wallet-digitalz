@@ -43,3 +43,11 @@
 .v-card.highlight-top {
   border-top: 4px solid rgba(var(--v-theme-success));
 }
+
+.light .background-world::before {
+  background: url('./assets/world-light.jpg') no-repeat;
+}
+
+.dark .background-world::before {
+  background: url('./assets/world-light-off.jpg') no-repeat;
+}
