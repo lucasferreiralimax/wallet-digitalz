@@ -51,3 +51,18 @@
 .dark .background-world::before {
   background: url('./assets/world-light-off.jpg') no-repeat;
 }
+
+.text-value {
+  position: absolute;
+  right: 35px;
+  transform: translateY(1px);
+}
+.register.info {
+  box-shadow: inset 2px 0 0 rgba(var(--v-theme-info));
+}
+.register.error {
+  box-shadow: inset 2px 0 0 rgba(var(--v-theme-error));
+}
+.register.success {
+  box-shadow: inset 2px 0 0 rgba(var(--v-theme-success));
+}
