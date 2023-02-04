@@ -50,7 +50,7 @@ const typeColors: any = {
 </script>
 
 <template>
-  <div class="d-flex align-start mb-4 mt-8">
+  <div class="d-flex align-start mb-2">
     <h3>{{ $t(`register.form.${type}`, registersLength) }}</h3>
     <v-btn
       class="ml-auto"
