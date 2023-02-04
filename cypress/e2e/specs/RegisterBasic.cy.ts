@@ -4,6 +4,7 @@ const appVersion: string = pkg.version
 
 describe('Test render register basic', () => {
   it('Render a investiment basic', () => {
+    cy.visit('/')
     cy.get('[aria-label="New register"]').click()
     cy.get('[aria-label="Select type register"]').type('Investimento', { force: true })
     cy.get('.v-select__content .v-list-item:nth-of-type(1)').click({ force: true })
@@ -13,7 +14,6 @@ describe('Test render register basic', () => {
     cy.get('[aria-label="Create register"]').click()
   })
   it('Render a expense basic', () => {
-    cy.visit('/')
     cy.get('[aria-label="New register"]').click()
     cy.get('[aria-label="Select type register"]').type('Entrada', { force: true })
     cy.get('.v-select__content .v-list-item:nth-of-type(2)').click({ force: true })
