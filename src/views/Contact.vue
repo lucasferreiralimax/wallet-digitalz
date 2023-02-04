@@ -56,6 +56,10 @@
   min-height: 100vh;
 }
 
+.background-world .v-card {
+  max-width: 330px;
+}
+
 .background-world::before {
   pointer-events: none;
   content: '';
