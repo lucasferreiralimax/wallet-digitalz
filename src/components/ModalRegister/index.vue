@@ -84,7 +84,8 @@ async function validate () {
         color="success"
         v-bind="props"
         variant="flat"
-        class="mr-sm-10 mr-4"
+        class="mr-sm-10 mr-4 teste"
+        aria-label="New register"
       >
         <v-icon class="mr-2" icon="mdi-plus" />
         {{ $t('actions.register') }}
@@ -110,6 +111,7 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-select
+                  aria-label="Select type register"
                   :label="$t('register.form.type')"
                   v-model="typeRegister"
                   :rules="typeRules"
@@ -129,6 +131,7 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-text-field
+                  aria-label="Name of register"
                   :label="$t('register.form.name')"
                   v-model="name"
                   :rules="nameRules"
@@ -140,6 +143,7 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-text-field
+                  aria-label="Value of register"
                   :label="$t('register.form.value')"
                   v-model="value"
                   prefix="$"
@@ -153,6 +157,7 @@ async function validate () {
                 class="pa-0 pb-2"
               >
                 <v-textarea
+                  aria-label="Description of register"
                   :label="$t('register.form.description')"
                   v-model="description"
                   :rules="descriptionRules"
@@ -175,6 +180,7 @@ async function validate () {
           {{ $t('actions.cancel') }}
         </v-btn>
         <v-btn
+          aria-label="Create register"
           color="success"
           variant="flat"
           @click="validate"
