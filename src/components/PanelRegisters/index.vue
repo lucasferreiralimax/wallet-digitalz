@@ -9,19 +9,20 @@ import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
   type: string,
-  registers: Register,
+  registers: Register[],
 }>()
 
 const { t, locale } = useI18n()
 const wallet = useWalletStore()
 const panel = ref<RegisterIds[]>([])
+const registersLength = ref<Number>(props.registers ? props.registers.length : 0)
 const panelChangeView = ref<boolean>(false)
 const changeViewLabel = ref<string>(changeViewLabelCurrent())
 
 function changeViewLabelCurrent () {
   return !panelChangeView.value
-    ? `${t('actions.expand')} ${t(`register.form.${props.type}`, props.registers.length)}`
-    : `${t('actions.compact')} ${t(`register.form.${props.type}`, props.registers.length)}`
+    ? `${t('actions.expand')} ${t(`register.form.${props.type}`, registersLength.value)}`
+    : `${t('actions.compact')} ${t(`register.form.${props.type}`, registersLength.value)}`
 }
 
 function changeView() {
@@ -30,8 +31,15 @@ function changeView() {
 }
 
 watch(panel, (newPanel) => {
+  if (panelChangeView.value && !newPanel.length) {
+    panelChangeView.value = false
+  }
   changeViewLabel.value = changeViewLabelCurrent()
-  if (panelChangeView.value && !newPanel.length) panelChangeView.value = false
+})
+
+watch(props, (newPanel) => {
+  registersLength.value = newPanel.registers.length
+  changeViewLabel.value = changeViewLabelCurrent()
 })
 
 const typeColors: any = {
@@ -43,7 +51,7 @@ const typeColors: any = {
 
 <template>
   <div class="d-flex align-start mb-4 mt-8">
-    <h3>{{ $t(`register.form.${type}`, registers.length) }}</h3>
+    <h3>{{ $t(`register.form.${type}`, registersLength) }}</h3>
     <v-btn
       class="ml-auto"
       @click="changeView"
@@ -88,7 +96,7 @@ const typeColors: any = {
           class="text-value pl-2 font-weight-bold"
           :class="[`text-${typeColors[type]}`]"
         >
-          {{ parseMoney(item.value, locale) }}
+          {{ parseMoney(Number(item.value), locale) }}
         </span>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
