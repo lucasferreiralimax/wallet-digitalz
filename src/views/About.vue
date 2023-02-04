@@ -1,7 +1,10 @@
 <template>
   <div class="pa-sm-10 pa-4 pt-6">
     <v-card class="highlight-top pa-4 mb-sm-8 mb-4 elevation-2">
-      <h2 class="mb-2 text-h5">{{ $t('about.project.title') }}</h2>
+      <h2 class="mb-2 text-h5">
+        <v-icon class="mr-2" icon="mdi-information-variant" />
+        {{ $t('about.project.title') }}
+      </h2>
       <p class="text-body-1">
         {{ $t('about.project.text1') }}
       </p>
@@ -13,7 +16,10 @@
       </p>
     </v-card>
     <v-card class="highlight-top pa-4 mb-sm-8 mb-4 elevation-2">
-      <h2 class="mb-4 text-h5">{{ $t('about.tech.title') }}</h2>
+      <h2 class="mb-4 text-h5">
+        <v-icon class="mr-2" icon="mdi-laptop" />
+        {{ $t('about.tech.title') }}
+      </h2>
       <p class="text-body-1">
         {{ $t('about.tech.text1') }}
       </p>
@@ -41,7 +47,10 @@
       </p>
     </v-card>
     <v-card class="highlight-top pa-4 elevation-2">
-      <h2 class="mb-4 text-h5">{{ $t('about.objective.title') }}</h2>
+      <h2 class="mb-4 text-h5">
+        <v-icon class="mr-2" icon="mdi-target" />
+        {{ $t('about.objective.title') }}
+      </h2>
       <ol class="list">
         <li>{{ $t('about.tech.text1') }}</li>
         <li>{{ $t('about.tech.text2') }}</li>

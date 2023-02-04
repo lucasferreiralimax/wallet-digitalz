@@ -1,7 +1,10 @@
 <template>
   <div class="pa-sm-10 pa-4 pt-6 background-world">
     <v-card class="highlight-top pa-4 mb-4 elevation-2">
-      <h2 class="mb-2 text-h5">{{ $t('contact.title') }}</h2>
+      <h2 class="mb-2 text-h5">
+        <v-icon class="mr-2" icon="mdi-earth" />
+        {{ $t('contact.title') }}
+      </h2>
       <p class="text-body-1 mb-2">
         {{ $t('contact.text1') }}
       </p>
