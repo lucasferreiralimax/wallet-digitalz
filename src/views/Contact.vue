@@ -58,6 +58,7 @@
 
 .background-world .v-card {
   max-width: 330px;
+  margin: 0 auto;
 }
 
 .background-world::before {
