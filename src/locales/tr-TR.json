@@ -9,8 +9,7 @@
     "lets": "Kayıtlarınızı şimdi oluşturun",
     "about": "Bu uygulamanın amacı; paranızı, harcamalarınızı ve yatırımlarınızı yönetmenizde yardımcı olmaktır",
     "liquid": "Sıvı",
-    "money": "Peşin",
-    "list": "kayıt listesi"
+    "money": "Peşin"
   },
   "about": {
     "project": {
@@ -51,9 +50,9 @@
       "value": "Kayıt değeri *",
       "description": "Kayıt Açıklaması *",
       "indicates": "* Bir alanın zorunlu olduğunu gösterir",
-      "investiment": "Yatırım",
-      "expense": "gider",
-      "entry": "gelir",
+      "investiment": "Yatırım | yatırımlar",
+      "expense": "gider | giderler",
+      "entry": "gelir | girişler",
       "rules": {
         "type": {
           "required": "tür gerekli"
@@ -80,7 +79,7 @@
     "confirm": "Onayla",
     "cancel": "İptal",
     "register": "Kayıt ol",
-    "expand": "hepsini genişlet",
-    "compact": "hepsini sıkıştır"
+    "expand": "genişlet",
+    "compact": "sıkıştır"
   }
 }

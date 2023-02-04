@@ -9,8 +9,7 @@
     "lets": "Let's go make your registers",
     "about": "This application is for help to manager your money, expenses and investiments",
     "liquid": "Liquid",
-    "money": "Money",
-    "list": "List of registers"
+    "money": "Money"
   },
   "about": {
     "project": {
@@ -51,9 +50,9 @@
       "value": "Value of register *",
       "description": "Description of register *",
       "indicates": "* indicates required field",
-      "investiment": "Investiment",
-      "expense": "Expense",
-      "entry": "Entry",
+      "investiment": "Investiment | Investiments",
+      "expense": "Expense | Expenses",
+      "entry": "Entry | Entrys",
       "rules": {
         "type": {
           "required": "Type is required"
@@ -80,7 +79,7 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "register": "Register",
-    "expand": "Expand All",
-    "compact": "Compact All"
+    "expand": "Expand",
+    "compact": "Compact"
   }
 }

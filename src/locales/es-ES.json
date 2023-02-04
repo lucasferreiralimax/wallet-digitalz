@@ -9,8 +9,7 @@
     "lets": "Comience sus registros ahora",
     "about": "Esta aplicación es para ayudarlo a administrar su dinero, gastos e inversiones.",
     "liquid": "Líquido",
-    "money": "Dinero",
-    "list": "Listado de los registros"
+    "money": "Dinero"
   },
   "about": {
     "project": {
@@ -51,9 +50,9 @@
       "value": "Valor do registro *",
       "description": "Descripción do registro *",
       "indicates": "* indica un campo obligatorio",
-      "investiment": "Inversión",
-      "expense": "Gasto",
-      "entry": "Ingresso",
+      "investiment": "Inversión | Inversións",
+      "expense": "Gasto | Gastos",
+      "entry": "Ingresso | Ingressos",
       "rules": {
         "type": {
           "required": "Tipo es obligatorio"
@@ -80,7 +79,7 @@
     "confirm": "Confirmar",
     "cancel": "Cancelar",
     "register": "Registro",
-    "expand": "Expandir todo",
-    "compact": "Comprimir todo"
+    "expand": "Expandir",
+    "compact": "Comprimir"
   }
 }

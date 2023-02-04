@@ -9,8 +9,7 @@
     "lets": "现在开始你的记录",
     "about": "此应用程序旨在帮助您管理您的资金、开支和投资。",
     "liquid": "液体",
-    "money": "现金",
-    "list": "记录清单"
+    "money": "现金"
   },
   "about": {
     "project": {
@@ -51,9 +50,9 @@
       "value": "登记值 *",
       "description": "记录说明 *",
       "indicates": "* 表示必填字段",
-      "investiment": "投资",
-      "expense": "费用",
-      "entry": "禁止",
+      "investiment": "投资 | 投资",
+      "expense": "费用 | 花费",
+      "entry": "禁止 | 条目",
       "rules": {
         "type": {
           "required": "类型是必需的"
@@ -80,7 +79,7 @@
     "confirm": "确认",
     "cancel": "取消",
     "register": "记录",
-    "expand": "展开全部",
-    "compact": "全部压缩"
+    "expand": "扩张",
+    "compact": "袖珍的"
   }
 }
