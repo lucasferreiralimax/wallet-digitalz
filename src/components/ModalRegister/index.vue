@@ -8,7 +8,7 @@ import { parseMoney } from '@/utils'
 import { TypeRegister, Register } from '@/types'
 
 const { t, locale } = useI18n()
-const { xs, sm } = useDisplay()
+const { xs } = useDisplay()
 const props = defineProps<{ update?: boolean, register?: Register }>()
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
