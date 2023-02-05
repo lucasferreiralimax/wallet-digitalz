@@ -9,6 +9,6 @@ export const parseMoney = (money: string | number, country: string, eye: boolean
     'zh-CN': 'CNY',
     'tr-TR': 'TUR',
   }
-  const value = new Intl.NumberFormat(country, { style: 'currency', currency: currencys[country] }).format(number);
+  const value = new Intl.NumberFormat(country, { style: 'currency', currency: currencys[country] }).format(number)
   return eye ? value : value.replace(/[.,0-9]/g, "*")
 }
