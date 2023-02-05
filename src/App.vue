@@ -43,14 +43,14 @@ onMounted(() => {
         :icon="drawer ? 'mdi-close' : 'mdi-menu'"
       />
       <router-link to="/" class="logo ml-4">
-        <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
+        <h1 class="d-flex align-center text-body-2 text-sm-h5 font-weight-bold"><Logo  class="mr-2"/>Wallet Digitalz</h1>
       </router-link>
       <v-spacer />
       <v-btn
         v-if="wallet.registers.length"
         role="button"
         aria-label="Button hidden values"
-        class="mr-4"
+        class="mx-4"
         @click.stop="wallet.eyeToggle"
         size="x-xsall"
         :icon="wallet.eye ? 'mdi-eye' : 'mdi-eye-off'"

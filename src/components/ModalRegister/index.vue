@@ -2,11 +2,13 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { v4 as uuidv4 } from 'uuid';
+import { useDisplay } from 'vuetify'
 import { useWalletStore } from '@/stores/wallet'
 import { parseMoney } from '@/utils'
 import { TypeRegister, Register } from '@/types'
 
 const { t, locale } = useI18n()
+const { xs, sm } = useDisplay()
 const props = defineProps<{ update?: boolean, register?: Register }>()
 const wallet = useWalletStore()
 const dialog = ref<boolean>(false)
@@ -86,6 +88,7 @@ async function validate () {
         variant="flat"
         class="mr-sm-10 mr-4 teste"
         aria-label="New register"
+        :size="xs ? 'small' : undefined"
       >
         <v-icon class="mr-2" icon="mdi-plus" />
         {{ $t('actions.register') }}
