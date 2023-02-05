@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import Language from '@/components/Language/index.vue'
 import Logo from '@/components/Logo/index.vue'
 import ModalRegister from '@/components/ModalRegister/index.vue'
 import Footer from '@/components/Footer/index.vue'
 import { useDisplay } from 'vuetify'
 import { useWalletStore } from '@/stores/wallet'
+import { useRoute } from 'vue-router'
 
 const wallet = useWalletStore()
 const theme = ref('light')
 const drawer = ref(true)
 const { xs } = useDisplay()
+const route = useRoute()
 
 function setTheme (value: string) {
   localStorage.setItem('theme', value)
@@ -46,16 +48,18 @@ onMounted(() => {
         <h1 class="d-flex align-center text-body-2 text-sm-h5 font-weight-bold"><Logo  class="mr-2"/>Wallet Digitalz</h1>
       </router-link>
       <v-spacer />
-      <v-btn
-        v-if="wallet.registers.length"
-        role="button"
-        aria-label="Button hidden values"
-        class="mx-4"
-        @click.stop="wallet.eyeToggle"
-        size="x-xsall"
-        :icon="wallet.eye ? 'mdi-eye' : 'mdi-eye-off'"
-      />
-      <ModalRegister />
+      <template v-if="route.name == 'home'">
+        <v-btn
+          v-if="wallet.registers.length"
+          role="button"
+          aria-label="Button hidden values"
+          class="mx-4"
+          @click.stop="wallet.eyeToggle"
+          size="x-xsall"
+          :icon="wallet.eye ? 'mdi-eye' : 'mdi-eye-off'"
+        />
+        <ModalRegister />
+      </template>
     </v-app-bar>
 
     <v-navigation-drawer
