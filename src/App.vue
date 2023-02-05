@@ -5,7 +5,9 @@ import Logo from '@/components/Logo/index.vue'
 import ModalRegister from '@/components/ModalRegister/index.vue'
 import Footer from '@/components/Footer/index.vue'
 import { useDisplay } from 'vuetify'
+import { useWalletStore } from '@/stores/wallet'
 
+const wallet = useWalletStore()
 const theme = ref('light')
 const drawer = ref(true)
 const { xs } = useDisplay()
@@ -44,6 +46,14 @@ onMounted(() => {
         <h1 class="d-flex"><Logo  class="mr-2"/>Wallet Digitalz</h1>
       </router-link>
       <v-spacer />
+      <v-btn
+        role="button"
+        aria-label="Button hidden values"
+        class="mr-4"
+        @click.stop="wallet.eyeToggle"
+        size="x-xsall"
+        :icon="wallet.eye ? 'mdi-eye' : 'mdi-eye-off'"
+      />
       <ModalRegister />
     </v-app-bar>
 

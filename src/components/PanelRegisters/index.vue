@@ -96,7 +96,7 @@ const typeColors: any = {
           class="text-value pl-2 font-weight-bold"
           :class="[`text-${typeColors[type]}`]"
         >
-          {{ parseMoney(Number(item.value), locale) }}
+          {{ wallet.eye ? parseMoney(Number(item.value), locale) : '****' }}
         </span>
       </v-expansion-panel-title>
       <v-expansion-panel-text>

@@ -17,6 +17,7 @@ export const useWalletStore = defineStore('wallet', {
   state: (): any => { // @TODO adjustment type
     return {
       registers: useStorage('my-wallet', []),
+      eye: useStorage('my-wallet-eye', true),
     }
   },
   getters: {
@@ -47,6 +48,9 @@ export const useWalletStore = defineStore('wallet', {
     },
     deleteRegister(target: string) {
       this.registers = this.registers.filter(({ id }: Register) => id !== target)
+    },
+    eyeToggle() {
+      this.eye = !this.eye
     },
   },
 })

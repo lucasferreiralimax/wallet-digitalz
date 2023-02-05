@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useWalletStore } from '@/stores/wallet'
+
 defineProps<{
   title: string,
   value: string,
   type: string,
 }>()
 
+const wallet = useWalletStore()
 const typeColors: any = {
   investiment: 'info',
   expense: 'error',
@@ -24,7 +27,7 @@ const typeColors: any = {
     >
       {{ title }}
     </span>
-    <b class="mr-2">{{ value }}</b>
+    <b class="mr-2">{{ wallet.eye ? value : '****' }}</b>
   </v-card>
 </template>
 
