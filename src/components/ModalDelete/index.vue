@@ -29,7 +29,7 @@ const wallet = useWalletStore()
         <span class="text-h5">{{ $t('register.delete') }}</span>
       </v-card-title>
       <v-card-text>
-        {{ $t('register.deleteMsg', { name: register.name, value: parseMoney(Number(register.value), locale) }) }}
+        {{ $t('register.deleteMsg', { name: register.name, value: parseMoney(Number(register.value), locale, wallet.eye) }) }}
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>

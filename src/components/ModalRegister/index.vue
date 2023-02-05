@@ -20,7 +20,7 @@ const value = ref<number | undefined>(props.register ? props.register.value : un
 const description = ref<string | undefined>(props.register ? props.register.description : undefined)
 
 const sizeLimitMoney = 9999999.99;
-const limitMoney = parseMoney(sizeLimitMoney, locale.value)
+const limitMoney = parseMoney(sizeLimitMoney, locale.value, true)
 
 const typeRules = [
   (v: string) => !!v || t('register.form.rules.type.required')
