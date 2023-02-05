@@ -13,14 +13,14 @@ const wallet = useWalletStore()
     <v-col v-if="wallet.getTotal">
       <Information
         :title="$t('home.money')"
-        :value="parseMoney(wallet.getTotal, locale)"
+        :value="parseMoney(wallet.getTotal, locale, wallet.eye)"
         type="entry"
       />
     </v-col>
     <v-col v-if="wallet.getTotalLessExpense">
       <Information
         :title="$t('home.liquid')"
-        :value="parseMoney(wallet.getTotalLessExpense, locale)"
+        :value="parseMoney(wallet.getTotalLessExpense, locale, wallet.eye)"
         type="liquid"
       />
     </v-col>
@@ -29,21 +29,21 @@ const wallet = useWalletStore()
     <v-col v-if="wallet.getEntryTotal">
       <Information
         :title="$t('register.form.entry')"
-        :value="parseMoney(wallet.getEntryTotal, locale)"
+        :value="parseMoney(wallet.getEntryTotal, locale, wallet.eye)"
         type="entry"
       />
     </v-col>
     <v-col v-if="wallet.getExpensesTotal">
       <Information
         :title="$t('register.form.expense')"
-        :value="parseMoney(wallet.getExpensesTotal, locale)"
+        :value="parseMoney(wallet.getExpensesTotal, locale, wallet.eye)"
         type="expense"
       />
     </v-col>
     <v-col v-if="wallet.getInvestimentTotal">
       <Information
         :title="$t('register.form.investiment')"
-        :value="parseMoney(wallet.getInvestimentTotal, locale)"
+        :value="parseMoney(wallet.getInvestimentTotal, locale, wallet.eye)"
         type="investiment"
       />
     </v-col>

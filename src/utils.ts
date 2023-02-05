@@ -1,4 +1,5 @@
-export const parseMoney = (money: string | number, country: string) => {
+
+export const parseMoney = (money: string | number, country: string, eye: boolean) => {
   const number = Number(Number(money).toFixed(2))
   const currencys: any = {
     'pt-BR': 'BRL',
@@ -8,5 +9,6 @@ export const parseMoney = (money: string | number, country: string) => {
     'zh-CN': 'CNY',
     'tr-TR': 'TUR',
   }
-  return new Intl.NumberFormat(country, { style: 'currency', currency: currencys[country] }).format(number)
+  const value = new Intl.NumberFormat(country, { style: 'currency', currency: currencys[country] }).format(number);
+  return eye ? value : value.replace(/[.,0-9]/g, "*")
 }
