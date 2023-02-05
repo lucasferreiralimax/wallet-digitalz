@@ -47,6 +47,7 @@ onMounted(() => {
       </router-link>
       <v-spacer />
       <v-btn
+        v-if="wallet.registers.length"
         role="button"
         aria-label="Button hidden values"
         class="mr-4"
