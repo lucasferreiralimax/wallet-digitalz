@@ -36,6 +36,14 @@
   color: rgba(var(--v-theme-success));
 }
 
+/* adjustment fix color text select */
+
+.v-list {
+  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity)) !important;
+}
+
+/* #### */
+
 .list {
   margin-left: 1rem;
 }
