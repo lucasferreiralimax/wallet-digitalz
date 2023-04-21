@@ -1,6 +1,7 @@
 # Wallet Digitalz
 
 This project is a application for manager your money and investiment
+New repo for development this application in https://github.com/criar-art/wallet.digitalz
 
 ## Learn More
 ### :performing_arts: Com quem você pode conversar sobre o projeto?
